@@ -7,10 +7,10 @@ function SavedWork({ title, author, onDelete }) {
       <div>
         <h3>{title}</h3>
         <p className="author">{author}</p>
-        {/* ... (otros detalles si los tienes) ... */}
+        {}
         <button className="delete-button" onClick={onDelete}>Eliminar</button>
       </div>
-      {/* Eliminamos el div de rating */}
+      {}
     </div>
   );
 }

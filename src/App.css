@@ -81,7 +81,7 @@ body {
 }
 
 .search-bar button {
-  background-color: #007bff;
+  background-color: #F26522;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -193,7 +193,7 @@ body {
 }
 
 .result-item .save-button {
-  background-color: #28a745;
+  background-color: #F26522;
   color: white;
   padding: 8px 15px;
   border: none;
