@@ -9,6 +9,11 @@
     margin-top: 0;
     margin-bottom: 10px;
 }
+.user-page .content {
+    display: flex;
+    flex-direction: row-reverse; /* Colocamos los filtros a la derecha */
+    gap: 20px;
+  }
 
 .saved-works-container {
     display: flex;

@@ -2,13 +2,13 @@ import React from 'react';
 
 function FilterSection({ selectedFilters, onFilterChange }) {
   const areas = ["IoT", "Software", "Cloud Computing", "Inteligencia Artificial"];
-  const periods = ["2023-2", "2023-1", "2022-2"]; // Actualiza los períodos
+  const periods = ["2023-2", "2023-1", "2022-2"];
 
   return (
     <div className="filter-section">
-      <h3>Filtros</h3>
-      <h4>Área</h4>
-      <div className="checkbox-group"> {/* Agrupamos los checkboxes de área */}
+      <h3 className="filter-title">Filtros</h3>
+      <div className="filter-group"> 
+        <h4 className="filter-subtitle">Área</h4>
         {areas.map(area => (
           <label key={area}>
             <div className="checkbox-container">
@@ -23,9 +23,8 @@ function FilterSection({ selectedFilters, onFilterChange }) {
           </label>
         ))}
       </div>
-
-      <h4>Período</h4>
-      <div className="checkbox-group"> {/* Agrupamos los checkboxes de período */}
+      <div className="filter-group">
+        <h4 className="filter-subtitle">Período</h4>
         {periods.map(period => (
           <label key={period}>
             <div className="checkbox-container">

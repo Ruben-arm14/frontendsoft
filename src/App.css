@@ -94,6 +94,11 @@ body {
   display: flex;
   gap: 20px;
 }
+.filter-section .checkbox-group {
+  padding: 15px; /* Agregamos padding al contenedor de checkboxes */
+  border: 1px solid #ddd; /* Agregamos un borde */
+  border-radius: 0 0 5px 5px; /* Redondeamos solo las esquinas inferiores */
+}
 
 /* FilterSection */
 .filter-section {
@@ -104,21 +109,29 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-left: 20px; /* Espacio entre resultados y filtros */
 }
-
 .filter-title {
   font-size: 18px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   text-align: center;
   font-weight: bold;
 }
-
 .filter-section h4 {
-  display: none; 
+  margin-top: 25px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  background-color: #F26522; /* Color de fondo naranja */
+  color: white;
+  padding: 8px 15px;
+  border-radius: 4px;
+  text-align: center;
 }
 
+.filter-group { /* Estilos para los contenedores de cada grupo de filtros */
+  margin-bottom: 15px; /* Espacio entre los grupos de filtros */
+}
 .filter-section label {
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   text-align: left;
 }
 
