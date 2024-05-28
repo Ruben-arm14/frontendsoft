@@ -66,7 +66,12 @@ function App() {
               handleFilterChange={handleFilterChange} 
             />
           } />
-          <Route path="/profesor" element={<ProfessorPage />} />
+          <Route path="/profesor" element={
+            <ProfessorPage
+              investigaciones={investigaciones}
+              onDeleteSavedWork={handleDeleteSavedWork} // Pasamos la función onDelete (si es necesaria)
+            />
+          } />
         </Routes>
       </div>
     </Router>

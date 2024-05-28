@@ -1,32 +1,39 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import profileIcon from '../perfil.png'; // Asegúrate de tener la imagen en tu carpeta src/assets/images
+import profileIcon from '../perfil.png';
 
 function Header() {
-    const location = useLocation();
-  
-    return (
-      <header className="header">
-        {location.pathname === '/usuario' ? ( // Renderizado condicional
+  const location = useLocation();
+
+  return (
+    <header className="header">
+      {location.pathname !== '/' && ( 
+        <Link to="/" className="home-link">Home Page</Link>
+      )}
+
+      <h1>Lumen Investiga</h1>
+
+      <div className="profile-container">
+        {location.pathname === '/usuario' ? ( 
           <>
-            <Link to="/" className="home-link">Home Page</Link>
-            <h1>Lumen Investiga</h1>
-            <div className="profile-container">
-              <span className="profile-text">Hola, Juan</span>
-              <img src={profileIcon} alt="Profile icon" className="profile-icon" />
-            </div>
+            <span className="profile-text">Hola, Juan</span>
+            <img src={profileIcon} alt="Profile icon" className="profile-icon" />
           </>
-        ) : ( // Renderizado para otras páginas
-          <>
-            <h1>Lumen Investiga</h1>
-            <div className="profile-container">
-              <span className="profile-text">Perfil</span>
+        ) : location.pathname === '/profesor' ? ( // Renderizado condicional para la página del profesor
+            <>
+              <span className="profile-text">Hola, Profesor</span>
               <img src={profileIcon} alt="Profile icon" className="profile-icon" />
-            </div>
+            </>
+          ) : ( // Renderizado para otras páginas
+          <>
+            <span className="profile-text">Perfil</span>
+            <img src={profileIcon} alt="Profile icon" className="profile-icon" />
           </>
         )}
-      </header>
-    );
-  }
-  
-  export default Header;
+      </div>
+    </header>
+  );
+}
+
+export default Header;
+
