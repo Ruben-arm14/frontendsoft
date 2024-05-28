@@ -1,0 +1,23 @@
+/* UserPage.css */
+.user-page {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-page h2 {
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.saved-works-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.content {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
