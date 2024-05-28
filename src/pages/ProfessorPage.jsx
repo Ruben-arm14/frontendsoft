@@ -1,18 +1,22 @@
 import React from 'react';
-import SavedWork from '../components/SavedWork'; // Reutilizamos el componente SavedWork
+import ResultItem from '../components/ResultItem';
+import ActionsSection from '../components/ActionsSection'; 
 
 function ProfessorPage({ investigaciones, onDeleteSavedWork }) {
   return (
-    <div className="user-page"> {/* Reutilizamos la clase user-page */}
-      <h2>Trabajos Subidos:</h2> {/* Cambiamos el título */}
-      <div className="results-list"> 
-        {investigaciones.map(work => (
-          <SavedWork
-            key={work.id}
-            {...work}
-            onDelete={onDeleteSavedWork} // Pasamos la función onDelete (si es necesaria)
-          />
-        ))}
+    <div className="user-page">
+      <h2>Trabajos Subidos:</h2>
+      <div className="content">
+        <div className="filter-container"> {/* Movemos los botones a la derecha */}
+          <ActionsSection />
+        </div>
+        <div className="saved-works-and-articles">
+          <div className="results-list"> 
+            {investigaciones.map(work => (
+              <ResultItem key={work.id} {...work} onDelete={onDeleteSavedWork} isProfessorPage={true} />
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );

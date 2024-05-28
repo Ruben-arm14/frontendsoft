@@ -88,7 +88,13 @@ body {
   border-radius: 0 5px 5px 0;
   cursor: pointer;
 }
-
+.filter-container {
+  width: 250px;
+  margin-left: 20px; /* Espacio entre artículos y filtros */
+  display: flex; /* Usamos flexbox para alinear el título y la sección de filtros */
+  flex-direction: column; /* Apilamos el título y la sección de filtros verticalmente */
+  align-items: center; /* Centramos horizontalmente el título y la sección de filtros */
+}
 /* Content */
 .content {
   display: flex;
@@ -215,6 +221,7 @@ body {
   display: flex;
   flex-direction: row-reverse; /* Colocamos los filtros a la derecha */
   gap: 20px;
+  align-items: flex-start; /* Alineamos los elementos al inicio (arriba) del contenedor */
 }
 .user-page {
   display: flex; /* Usamos flexbox para organizar el contenido */
@@ -257,4 +264,39 @@ body {
   border-radius: 4px;
   cursor: pointer;
   margin-left: auto; /* Alineamos el botón a la derecha */
+}
+.actions-section {
+  width: 250px; /* Ajustar el ancho según tus necesidades */
+  background-color: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-left: 20px;
+  text-align: center; /* Opcional: Centrar el texto de los botones */
+}
+
+.action-button {
+  display: block; /* Para que cada botón ocupe una línea completa */
+  width: 100%;   /* Para que los botones ocupen todo el ancho del contenedor */
+  padding: 10px;
+  margin-bottom: 10px; /* Espacio entre los botones */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.select-button {
+  background-color: #007bff; /* Color azul para Seleccionar */
+  color: white;
+}
+
+.delete-button {
+  background-color: #dc3545; /* Color rojo para Eliminar */
+  color: white;
+}
+
+.upload-button {
+  background-color: #28a745; /* Color verde para Subir Archivo */
+  color: white;
 }

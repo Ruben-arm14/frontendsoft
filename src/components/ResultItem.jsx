@@ -2,13 +2,15 @@ import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import documentIcon from '../document-icon.png';  // Asegúrate de tener la imagen en esta ruta
 
-function ResultItem({ title, author, rating, area, period, content, onDelete }) {
+function ResultItem({ title, author, rating, area, period, content, isProfessorPage, onDelete }) {
   const [currentRating, setCurrentRating] = useState(rating);
-  const location = useLocation();
+  const location = useLocation(); // Usamos el hook useLocation
+
+  const isHomePage = location.pathname === '/';  
   const isUserPage = location.pathname === '/usuario';
 
   const handleStarClick = (newRating) => {
-    if (!isUserPage) { // Solo permitimos cambiar la calificación si no estamos en la página de usuario
+    if (isHomePage) { // Solo permitimos cambiar la calificación si estamos en la página de inicio
       setCurrentRating(newRating);
     }
   };
@@ -21,7 +23,7 @@ function ResultItem({ title, author, rating, area, period, content, onDelete }) 
         <p className="author">{author}</p>
         <p className="content">{content}</p>
         <div className="rating-and-save">
-          {!isUserPage && ( // Mostramos las estrellas solo si NO estamos en la página de usuario
+          {isHomePage && ( // Mostramos las estrellas solo si estamos en la página de inicio
             <div className="rating">
               {[...Array(5)].map((star, index) => (
                 <span
@@ -35,7 +37,7 @@ function ResultItem({ title, author, rating, area, period, content, onDelete }) 
             </div>
           )}
           <button className="save-button" onClick={onDelete}>
-            {isUserPage ? 'Eliminar' : 'Guardar investigación'}
+            {isProfessorPage ? 'Detalles' : (isUserPage ? 'Eliminar' : 'Guardar investigación')}
           </button>
         </div>
       </div>

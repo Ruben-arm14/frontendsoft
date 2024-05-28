@@ -14,7 +14,11 @@
     flex-direction: row-reverse; /* Colocamos los filtros a la derecha */
     gap: 20px;
   }
-
+.button-group {
+    display: flex;
+    flex-direction: column; /* Apilamos los botones verticalmente */
+    gap: 10px; /* Espacio entre los botones */
+  }
 .saved-works-container {
     display: flex;
     flex-direction: column;
