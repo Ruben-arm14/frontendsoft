@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import documentIcon from '../document-icon.png';  // Asegúrate de tener la imagen en esta ruta
+import documentIcon from '../document-icon.png';  
 
 function ResultItem({ title, author, rating, area, period, content, isProfessorPage, onDelete }) {
   const [currentRating, setCurrentRating] = useState(rating);
-  const location = useLocation(); // Usamos el hook useLocation
+  const location = useLocation(); 
 
   const isHomePage = location.pathname === '/';  
   const isUserPage = location.pathname === '/usuario';
 
   const handleStarClick = (newRating) => {
-    if (isHomePage) { // Solo permitimos cambiar la calificación si estamos en la página de inicio
+    if (isHomePage) { 
       setCurrentRating(newRating);
     }
   };
@@ -23,7 +23,7 @@ function ResultItem({ title, author, rating, area, period, content, isProfessorP
         <p className="author">{author}</p>
         <p className="content">{content}</p>
         <div className="rating-and-save">
-          {isHomePage && ( // Mostramos las estrellas solo si estamos en la página de inicio
+          {isHomePage && ( 
             <div className="rating">
               {[...Array(5)].map((star, index) => (
                 <span

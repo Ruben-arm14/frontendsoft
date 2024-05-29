@@ -15,7 +15,6 @@ body {
   flex: 1; 
 }
 
-/* Header */
 .header {
   background-color: #F26522;
   color: white;
@@ -30,7 +29,7 @@ body {
 .header h1 {
   margin: 0;
   font-size: 24px;
-  margin-right: auto; /* Empuja el perfil al extremo derecho */
+  margin-right: auto;
 }
 
 .profile-container {
@@ -49,14 +48,13 @@ body {
   border-radius: 50%;
 }
 
-.home-link { /* Nuevo estilo para el enlace "Home Page" */
+.home-link {
   color: white;
-  text-decoration: none; /* Quitamos el subrayado del enlace */
+  text-decoration: none; 
   font-size: 16px;
-  margin-right: auto; /* Empujamos el enlace a la izquierda */
+  margin-right: auto; 
 }
 
-/* SearchBar */
 .search-bar {
   background-color: white;
   padding: 15px;
@@ -90,30 +88,29 @@ body {
 }
 .filter-container {
   width: 250px;
-  margin-left: 20px; /* Espacio entre artículos y filtros */
-  display: flex; /* Usamos flexbox para alinear el título y la sección de filtros */
-  flex-direction: column; /* Apilamos el título y la sección de filtros verticalmente */
-  align-items: center; /* Centramos horizontalmente el título y la sección de filtros */
+  margin-left: 20px; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
 }
-/* Content */
+
 .content {
   display: flex;
   gap: 20px;
 }
 .filter-section .checkbox-group {
-  padding: 15px; /* Agregamos padding al contenedor de checkboxes */
-  border: 1px solid #ddd; /* Agregamos un borde */
-  border-radius: 0 0 5px 5px; /* Redondeamos solo las esquinas inferiores */
+  padding: 15px; 
+  border: 1px solid #ddd; 
+  border-radius: 0 0 5px 5px; 
 }
 
-/* FilterSection */
 .filter-section {
   width: 250px;
   background-color: white;
   padding: 15px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-left: 20px; /* Espacio entre resultados y filtros */
+  margin-left: 20px; 
 }
 .filter-title {
   font-size: 18px;
@@ -125,15 +122,15 @@ body {
   margin-top: 25px;
   margin-bottom: 10px;
   font-size: 16px;
-  background-color: #F26522; /* Color de fondo naranja */
+  background-color: #F26522; 
   color: white;
   padding: 8px 15px;
   border-radius: 4px;
   text-align: center;
 }
 
-.filter-group { /* Estilos para los contenedores de cada grupo de filtros */
-  margin-bottom: 15px; /* Espacio entre los grupos de filtros */
+.filter-group { 
+  margin-bottom: 15px; 
 }
 .filter-section label {
   display: block;
@@ -146,7 +143,7 @@ body {
   accent-color: #F26522; 
 }
 
-/* ResultsList */
+
 .results-list {
   flex-grow: 1;
   display: flex;
@@ -155,7 +152,7 @@ body {
   max-width: 700px; 
 }
 
-/* ResultItem */
+
 .result-item {
   width: 100%;
   background-color: white;
@@ -219,15 +216,15 @@ body {
 }
 .user-page .content {
   display: flex;
-  flex-direction: row-reverse; /* Colocamos los filtros a la derecha */
+  flex-direction: row-reverse;
   gap: 20px;
-  align-items: flex-start; /* Alineamos los elementos al inicio (arriba) del contenedor */
+  align-items: flex-start; 
 }
 .user-page {
-  display: flex; /* Usamos flexbox para organizar el contenido */
-  flex-direction: column; /* Apilamos los elementos verticalmente */
+  display: flex; 
+  flex-direction: column; 
 }
-.user-page h2 { /* Estilos para el título "Trabajos Guardados:" */
+.user-page h2 { 
   font-size: 18px;
   margin-top: 0;
   margin-bottom: 10px;
@@ -236,11 +233,11 @@ body {
 .saved-works-container {
   display: flex;
   flex-direction: column;
-  gap: 10px; /* Espacio entre los trabajos guardados */
-  margin-bottom: 20px; /* Espacio entre los trabajos guardados y los resultados */
+  gap: 10px; 
+  margin-bottom: 20px; 
 }
 
-.saved-work { /* Estilos para cada trabajo guardado */
+.saved-work { 
   background-color: white;
   padding: 10px;
   border-radius: 5px;
@@ -256,30 +253,29 @@ body {
 }
 
 .saved-work .delete-button {
-  /* Estilos para el botón "Eliminar" */
-  background-color: #dc3545; /* Rojo */
+  background-color: #dc3545;
   color: white;
   padding: 5px 10px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  margin-left: auto; /* Alineamos el botón a la derecha */
+  margin-left: auto; 
 }
 .actions-section {
-  width: 250px; /* Ajustar el ancho según tus necesidades */
+  width: 250px;
   background-color: white;
   padding: 15px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-left: 20px;
-  text-align: center; /* Opcional: Centrar el texto de los botones */
+  text-align: center; 
 }
 
 .action-button {
-  display: block; /* Para que cada botón ocupe una línea completa */
-  width: 100%;   /* Para que los botones ocupen todo el ancho del contenedor */
+  display: block; 
+  width: 100%;   
   padding: 10px;
-  margin-bottom: 10px; /* Espacio entre los botones */
+  margin-bottom: 10px; 
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -287,16 +283,16 @@ body {
 }
 
 .select-button {
-  background-color: #007bff; /* Color azul para Seleccionar */
+  background-color: #007bff;
   color: white;
 }
 
 .delete-button {
-  background-color: #dc3545; /* Color rojo para Eliminar */
+  background-color: #dc3545; 
   color: white;
 }
 
 .upload-button {
-  background-color: #28a745; /* Color verde para Subir Archivo */
+  background-color: #28a745; 
   color: white;
 }

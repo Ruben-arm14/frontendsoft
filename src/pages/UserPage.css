@@ -1,4 +1,3 @@
-/* UserPage.css */
 .user-page {
     display: flex;
     flex-direction: column;
@@ -11,13 +10,13 @@
 }
 .user-page .content {
     display: flex;
-    flex-direction: row-reverse; /* Colocamos los filtros a la derecha */
+    flex-direction: row-reverse; 
     gap: 20px;
   }
 .button-group {
     display: flex;
-    flex-direction: column; /* Apilamos los botones verticalmente */
-    gap: 10px; /* Espacio entre los botones */
+    flex-direction: column; 
+    gap: 10px; 
   }
 .saved-works-container {
     display: flex;

@@ -69,7 +69,7 @@ function App() {
           <Route path="/profesor" element={
             <ProfessorPage
               investigaciones={investigaciones}
-              onDeleteSavedWork={handleDeleteSavedWork} // Pasamos la función onDelete (si es necesaria)
+              onDeleteSavedWork={handleDeleteSavedWork} 
             />
           } />
         </Routes>

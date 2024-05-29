@@ -19,7 +19,7 @@ function Header() {
             <span className="profile-text">Hola, Juan</span>
             <img src={profileIcon} alt="Profile icon" className="profile-icon" />
           </>
-        ) : location.pathname === '/profesor' ? ( // Renderizado condicional para la página del profesor
+        ) : location.pathname === '/profesor' ? ( 
             <>
               <span className="profile-text">Hola, Profesor</span>
               <img src={profileIcon} alt="Profile icon" className="profile-icon" />

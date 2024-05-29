@@ -1,7 +1,5 @@
-
-
 function Navigation() {
-    return null; // Como no quieres mostrar nada, devolvemos null
+    return null; 
   }
   
   export default Navigation;

@@ -7,7 +7,7 @@ function ProfessorPage({ investigaciones, onDeleteSavedWork }) {
     <div className="user-page">
       <h2>Trabajos Subidos:</h2>
       <div className="content">
-        <div className="filter-container"> {/* Movemos los botones a la derecha */}
+        <div className="filter-container"> {}
           <ActionsSection />
         </div>
         <div className="saved-works-and-articles">

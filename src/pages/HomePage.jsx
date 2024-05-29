@@ -2,7 +2,7 @@ import React from 'react';
 import FilterSection from '../components/FilterSection';
 import ResultsList from '../components/ResultsList';
 
-function HomePage({ filteredInvestigaciones, searchTerm, selectedFilters, handleFilterChange }) { // Recibe las props
+function HomePage({ filteredInvestigaciones, searchTerm, selectedFilters, handleFilterChange }) { 
 
   return (
     <div className="content">

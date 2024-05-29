@@ -10,7 +10,7 @@ function UserPage({ savedWorks, onDeleteSavedWork, investigaciones, selectedFilt
     <div className="user-page">
       <h2>Trabajos Guardados:</h2>
       <div className="content">
-        <div className="filter-container"> {/* Movemos los filtros a la derecha */}
+        <div className="filter-container"> {}
           <FilterSection selectedFilters={selectedFilters} onFilterChange={handleFilterChange} />
         </div>
         <div className="saved-works-and-articles">
