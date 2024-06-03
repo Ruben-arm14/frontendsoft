@@ -13,7 +13,9 @@ function SearchPage({ filteredInvestigaciones, searchTerm, selectedFilters, hand
     { label: 'TPI', count: 96 },
     { label: 'Seminario II', count: 45 },
   ];
-
+  console.log("filteredInvestigaciones:", filteredInvestigaciones); // Verifica si los datos llegan
+  console.log("searchTerm:", searchTerm);
+  console.log("selectedFilters:", selectedFilters);
   return (
     <div className="content">
       <div className="right-side">
