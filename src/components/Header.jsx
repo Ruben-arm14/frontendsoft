@@ -21,19 +21,13 @@ function Header() {
           </>
         ) : location.pathname === '/profesor' ? ( 
             <>
-              <span className="profile-text">Hola, Profesor</span>
+              <span className="profile-text">Hola, Profe</span>
               <img src={profileIcon} alt="Profile icon" className="profile-icon" />
             </>
-          ) : ( // Renderizado para otras páginas
-          <>
-            <span className="profile-text">Perfil</span>
-            <img src={profileIcon} alt="Profile icon" className="profile-icon" />
-          </>
-        )}
+          ) : null}
       </div>
     </header>
   );
 }
 
 export default Header;
-

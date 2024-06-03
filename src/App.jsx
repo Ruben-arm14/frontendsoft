@@ -3,9 +3,11 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import SearchBar from './components/SearchBar';
 import Navigation from './components/Navigation';
-import HomePage from './pages/HomePage';
+import ResultsPage from './pages/ResultsPage';
 import UserPage from './pages/UserPage';
 import ProfessorPage from './pages/ProfessorPage';
+import SearchPage from './pages/SearchPage';
+import Login from './components/Login';
 import investigaciones from './data';
 import './App.css';
 
@@ -49,28 +51,52 @@ function App() {
     <Router>
       <div className="app-container">
         <Header />
-        <SearchBar searchTerm={searchTerm} onSearch={setSearchTerm} />
-        <Navigation />
         <Routes>
-          <Route path="/" element={<HomePage 
-              filteredInvestigaciones={filteredInvestigaciones} 
-              searchTerm={searchTerm} 
-              selectedFilters={selectedFilters} 
-              handleFilterChange={handleFilterChange} />} />
+          <Route path="/" element={<Login />} />
+          <Route path="/resultados" element={
+            <div className="app-container">
+              <SearchBar searchTerm={searchTerm} onSearch={setSearchTerm} />
+              <Navigation />
+              <ResultsPage 
+                filteredInvestigaciones={filteredInvestigaciones}
+                searchTerm={searchTerm}
+                selectedFilters={selectedFilters}
+                handleFilterChange={handleFilterChange} 
+              /> 
+            </div>
+          } />
           <Route path="/usuario" element={
-            <UserPage
-              savedWorks={savedWorks}
-              onDeleteSavedWork={handleDeleteSavedWork}
-              investigaciones={investigaciones}
-              selectedFilters={selectedFilters} 
-              handleFilterChange={handleFilterChange} 
-            />
+            <div className="app-container">
+              <Header />
+              <UserPage
+                savedWorks={savedWorks}
+                onDeleteSavedWork={handleDeleteSavedWork}
+                investigaciones={investigaciones}
+                selectedFilters={selectedFilters} 
+                handleFilterChange={handleFilterChange} 
+              />
+            </div>
           } />
           <Route path="/profesor" element={
-            <ProfessorPage
-              investigaciones={investigaciones}
-              onDeleteSavedWork={handleDeleteSavedWork} 
-            />
+            <div className="app-container">
+              <Header />
+              <ProfessorPage
+                investigaciones={investigaciones}
+                onDeleteSavedWork={handleDeleteSavedWork} 
+              />
+            </div>
+          } />
+          <Route path="/busqueda" element={ // Nueva ruta para SearchPage
+            <div className="app-container">
+              <SearchBar searchTerm={searchTerm} onSearch={setSearchTerm} />
+              <Navigation />
+              <SearchPage
+                filteredInvestigaciones={filteredInvestigaciones}
+                searchTerm={searchTerm}
+                selectedFilters={selectedFilters}
+                handleFilterChange={handleFilterChange} 
+              />
+            </div>
           } />
         </Routes>
       </div>

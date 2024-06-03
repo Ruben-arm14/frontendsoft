@@ -2,19 +2,23 @@
 body {
   font-family: 'Arial', sans-serif;
   margin: 0;
-  background-color: #f4f4f4;
-  display: flex;
+  padding: 0;
+  background-color: white;
+  display: flex; /* Usamos Flexbox para centrar */
   flex-direction: column;
-  min-height: 100vh; 
+  justify-content: center; /* Centramos verticalmente */
+  align-items: center;    /* Centramos horizontalmente */
+  min-height: 100vh;
+  overflow: hidden; /* Eliminamos la barra de desplazamiento */
 }
 
+/* Contenedor principal de la aplicación */
 .app-container {
-  max-width: 960px;
-  margin: 0 auto;
+  width: 100%; 
   padding: 20px;
-  flex: 1; 
 }
 
+/* Header */
 .header {
   background-color: #F26522;
   color: white;
@@ -23,13 +27,13 @@ body {
   justify-content: space-between;
   align-items: center;
   border-radius: 8px 8px 0 0;
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
 }
 
 .header h1 {
   margin: 0;
   font-size: 24px;
-  margin-right: auto;
+  margin-right: auto; /* Empuja el perfil al extremo derecho */
 }
 
 .profile-container {
@@ -50,88 +54,90 @@ body {
 
 .home-link {
   color: white;
-  text-decoration: none; 
+  text-decoration: none;
   font-size: 16px;
-  margin-right: auto; 
+  margin-right: auto;
 }
 
+/* SearchBar */
 .search-bar {
-  background-color: white;
+  background-color: #F26522; /* Cambiamos el fondo a naranja */
+  color: white;
   padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
+  border-radius: 8px 8px 0 0; /* Redondeamos solo las esquinas superiores */
+  box-shadow: none; /* Eliminamos la sombra */
+  margin-bottom: 0; /* Eliminamos el margen inferior */
 }
 
 .search-bar input[type="text"] {
   flex-grow: 1;
   padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px 0 0 5px;
-  margin-right: 10px;
+  border: none; /* Eliminamos el borde del input */
+  border-radius: 0; /* Eliminamos los bordes redondeados del input */
+  background-color: #fff; /* Fondo blanco para el input */
+  color: #333; /* Color de texto negro */
 }
 
 .search-bar .search-icon {
   margin-right: 10px;
-  color: #999;
+  color: #fff; /* Cambiamos el color del ícono a blanco */
 }
+
 
 .search-bar button {
-  background-color: #F26522;
-  color: white;
+  background-color: white; /* Cambiamos el fondo a blanco */
+  color: #F26522; /* Cambiamos el color del texto a naranja */
   padding: 10px 20px;
   border: none;
-  border-radius: 0 5px 5px 0;
+  border-radius: 0;
   cursor: pointer;
 }
-.filter-container {
-  width: 250px;
-  margin-left: 20px; 
-  display: flex; 
-  flex-direction: column; 
-  align-items: center; 
-}
-
+/* Content */
 .content {
   display: flex;
   gap: 20px;
 }
-.filter-section .checkbox-group {
-  padding: 15px; 
-  border: 1px solid #ddd; 
-  border-radius: 0 0 5px 5px; 
+
+.user-page .content { /* Contenido de la página de usuario */
+  flex-direction: row-reverse; /* Coloca los filtros a la derecha */
 }
 
+.saved-works-and-articles {
+  flex: 1;
+}
+
+.filter-container {
+  width: 250px;
+}
+
+/* FilterSection */
 .filter-section {
   width: 250px;
   background-color: white;
   padding: 15px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-left: 20px; 
+  text-align: center;
 }
+
 .filter-title {
   font-size: 18px;
   margin-bottom: 10px;
   text-align: center;
   font-weight: bold;
 }
+
 .filter-section h4 {
   margin-top: 25px;
   margin-bottom: 10px;
   font-size: 16px;
-  background-color: #F26522; 
+  background-color: #F26522;
   color: white;
   padding: 8px 15px;
-  border-radius: 4px;
+  border-radius: 5px 5px 0 0;
   text-align: center;
 }
 
-.filter-group { 
-  margin-bottom: 15px; 
-}
 .filter-section label {
   display: block;
   margin-bottom: 5px;
@@ -139,20 +145,20 @@ body {
 }
 
 .filter-section input[type="checkbox"] {
-  margin-right: 8px; 
-  accent-color: #F26522; 
+  margin-right: 8px;
+  accent-color: #F26522;
 }
 
-
+/* ResultsList */
 .results-list {
   flex-grow: 1;
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   gap: 20px;
-  max-width: 700px; 
+  max-width: 700px;
 }
 
-
+/* ResultItem */
 .result-item {
   width: 100%;
   background-color: white;
@@ -171,7 +177,7 @@ body {
 
 .result-item .details {
   flex-grow: 1;
-  margin-right: 20px; 
+  margin-right: 20px;
 }
 
 .result-item .rating-and-save {
@@ -182,17 +188,17 @@ body {
 
 .result-item .rating {
   display: flex;
-  margin-bottom: 5px; 
+  margin-bottom: 5px;
 }
 
 .result-item .star {
   font-size: 18px;
-  color: #ccc; 
-  margin-right: 5px; 
+  color: #ccc;
+  margin-right: 5px;
 }
 
 .result-item .star.checked {
-  color: gold; 
+  color: gold;
 }
 
 .result-item .save-button {
@@ -205,94 +211,120 @@ body {
 }
 
 .result-item h3 {
-  margin: 0 0 5px 0; 
+  margin: 0 0 5px 0;
   font-size: 16px;
 }
 
 .result-item p {
-  margin: 0 0 10px 0; 
+  margin: 0 0 10px 0;
   font-size: 14px;
   color: #555;
 }
-.user-page .content {
+/* Login */
+.login-container {
   display: flex;
-  flex-direction: row-reverse;
-  gap: 20px;
-  align-items: flex-start; 
-}
-.user-page {
-  display: flex; 
-  flex-direction: column; 
-}
-.user-page h2 { 
-  font-size: 18px;
-  margin-top: 0;
-  margin-bottom: 10px;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 0 20px;
+  background-color: white;
+  overflow: hidden;
 }
 
-.saved-works-container {
+.login-form {
+  width: 400px;
+  background-color: white;
+  padding: 30px;
+  border: none;
+  box-shadow: none;
   display: flex;
   flex-direction: column;
-  gap: 10px; 
-  margin-bottom: 20px; 
-}
-
-.saved-work { 
-  background-color: white;
-  padding: 10px;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  display: flex;
   align-items: center;
 }
 
-.saved-work img {
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
+.form-group {
+  margin-bottom: 15px;
+  width: 100%;
+  position: relative;
 }
 
-.saved-work .delete-button {
-  background-color: #dc3545;
-  color: white;
-  padding: 5px 10px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-left: auto; 
+.form-group label {
+  position: absolute;
+  top: 10px; /* Ajustamos la posición vertical de la etiqueta */
+  left: 10px;
+  font-size: 14px;
+  color: #999;
+  pointer-events: none;
+  transition: all 0.2s ease;
 }
-.actions-section {
-  width: 250px;
+
+.form-group input[type="email"]:focus ~ label,
+.form-group input[type="password"]:focus ~ label,
+.form-group input[type="email"]:not(:placeholder-shown) ~ label,
+.form-group input[type="password"]:not(:placeholder-shown) ~ label {
+  top: -10px;
+  left: 8px;
+  font-size: 12px;
+  color: #333;
+  background-color: white;
+  padding: 0 5px;
+}
+
+.form-group input[type="email"],
+.form-group input[type="password"] {
+  width: 100%;
+  padding: 15px 10px 10px 10px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.login-form button {
+  background-color: #F26522;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%; 
+  margin-bottom: 10px;
+  border-radius: 10px; 
+}
+
+.login-form button:last-child {
+  margin-bottom: 0;
+  background-color: transparent; 
+  color: #F26522; 
+  font-size: 14px; 
+  text-decoration: none; 
+}
+/* Lo más trabajado */
+.most-worked {
   background-color: white;
   padding: 15px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-left: 20px;
-  text-align: center; 
+  margin-bottom: 20px; /* Espacio entre "Lo más trabajado" y los filtros */
 }
 
-.action-button {
-  display: block; 
-  width: 100%;   
-  padding: 10px;
-  margin-bottom: 10px; 
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
+.most-worked h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 18px;
 }
 
-.select-button {
-  background-color: #007bff;
-  color: white;
+.most-worked-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
 }
 
-.delete-button {
-  background-color: #dc3545; 
-  color: white;
+.most-worked-label {
+  font-weight: bold;
 }
 
-.upload-button {
-  background-color: #28a745; 
-  color: white;
+.right-side {
+  display: flex;
+  flex-direction: column; /* Apilamos "Lo más trabajado" y los filtros verticalmente */
 }

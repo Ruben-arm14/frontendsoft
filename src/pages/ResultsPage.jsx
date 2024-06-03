@@ -1,8 +1,9 @@
 import React from 'react';
 import FilterSection from '../components/FilterSection';
 import ResultsList from '../components/ResultsList';
+import './SearchPage.css';
 
-function HomePage({ filteredInvestigaciones, searchTerm, selectedFilters, handleFilterChange }) { 
+function ResultsPage({ filteredInvestigaciones, searchTerm, selectedFilters, handleFilterChange }) { 
 
   return (
     <div className="content">
@@ -13,4 +14,4 @@ function HomePage({ filteredInvestigaciones, searchTerm, selectedFilters, handle
     </div>
   );
 }
-export default HomePage;
+export default ResultsPage;
