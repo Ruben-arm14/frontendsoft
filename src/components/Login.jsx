@@ -12,27 +12,31 @@ function Login() {
 
   return (
     <div className="login-container">
-      <img src="logo.png" alt="Logo de Lumen Investiga" />
+      <div className="logo-container"> {/* Contenedor para centrar el logo */}
+        <img src="logo.png" alt="Logo de Lumen Investiga" />
+      </div>
       <h2>LUMENINVESTIGA</h2>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="email">Correo:</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-
-        <label htmlFor="password">Contraseña:</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-
+        <div className="form-group"> {/* Agrupamos label e input */}
+          <label htmlFor="email">Correo:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <div className="form-group"> {/* Agrupamos label e input */}
+          <label htmlFor="password">Contraseña:</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
         <button type="submit">Ingresar</button>
       </form>
       <a href="/register">Crear cuenta</a>

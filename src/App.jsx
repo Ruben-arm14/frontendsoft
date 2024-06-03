@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import SearchBar from './components/SearchBar';
-import Navigation from './components/Navigation';
-import ResultsPage from './pages/ResultsPage';
+import Navigation from './components/Navigation'; 
 import UserPage from './pages/UserPage';
 import ProfessorPage from './pages/ProfessorPage';
 import SearchPage from './pages/SearchPage';
 import Login from './components/Login';
+import Layout from './components/Layout';
+import ResultsPage from './pages/ResultsPage';
 import investigaciones from './data';
 import './App.css';
 
 function App() {
+  const location = useLocation();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedFilters, setSelectedFilters] = useState({
     area: [],
@@ -21,19 +23,12 @@ function App() {
   const [savedWorks, setSavedWorks] = useState([]);
 
   const handleFilterChange = (filterType, filterValue) => {
-    setSelectedFilters(prevFilters => {
-      const updatedFilters = { ...prevFilters };
-      if (filterType === 'area') {
-        updatedFilters.area = updatedFilters.area.includes(filterValue)
-          ? updatedFilters.area.filter(item => item !== filterValue)
-          : [...updatedFilters.area, filterValue];
-      } else if (filterType === 'period') {
-        updatedFilters.period = updatedFilters.period.includes(filterValue)
-          ? updatedFilters.period.filter(item => item !== filterValue)
-          : [...updatedFilters.period, filterValue];
-      }
-      return updatedFilters;
-    });
+    setSelectedFilters(prevFilters => ({
+      ...prevFilters,
+      [filterType]: prevFilters[filterType].includes(filterValue)
+        ? prevFilters[filterType].filter(item => item !== filterValue)
+        : [...prevFilters[filterType], filterValue]
+    }));
   };
 
   const handleDeleteSavedWork = (workId) => {
@@ -50,54 +45,65 @@ function App() {
   return (
     <Router>
       <div className="app-container">
-        <Header />
+        {location.pathname !== '/' && <Header />}
+
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/resultados" element={
-            <div className="app-container">
-              <SearchBar searchTerm={searchTerm} onSearch={setSearchTerm} />
-              <Navigation />
-              <ResultsPage 
-                filteredInvestigaciones={filteredInvestigaciones}
-                searchTerm={searchTerm}
-                selectedFilters={selectedFilters}
-                handleFilterChange={handleFilterChange} 
-              /> 
-            </div>
-          } />
-          <Route path="/usuario" element={
-            <div className="app-container">
-              <Header />
-              <UserPage
-                savedWorks={savedWorks}
-                onDeleteSavedWork={handleDeleteSavedWork}
-                investigaciones={investigaciones}
-                selectedFilters={selectedFilters} 
-                handleFilterChange={handleFilterChange} 
-              />
-            </div>
-          } />
-          <Route path="/profesor" element={
-            <div className="app-container">
-              <Header />
-              <ProfessorPage
-                investigaciones={investigaciones}
-                onDeleteSavedWork={handleDeleteSavedWork} 
-              />
-            </div>
-          } />
-          <Route path="/busqueda" element={ // Nueva ruta para SearchPage
-            <div className="app-container">
-              <SearchBar searchTerm={searchTerm} onSearch={setSearchTerm} />
-              <Navigation />
-              <SearchPage
-                filteredInvestigaciones={filteredInvestigaciones}
-                searchTerm={searchTerm}
-                selectedFilters={selectedFilters}
-                handleFilterChange={handleFilterChange} 
-              />
-            </div>
-          } />
+          <Route 
+            path="/resultados" 
+            element={
+              <Layout>
+                <SearchBar searchTerm={searchTerm} onSearch={setSearchTerm} />
+                <Navigation />
+                <ResultsPage
+                  filteredInvestigaciones={filteredInvestigaciones}
+                  searchTerm={searchTerm}
+                  selectedFilters={selectedFilters}
+                  handleFilterChange={handleFilterChange}
+                />
+              </Layout> // Etiqueta de cierre </Layout> agregada
+            } 
+          />
+          <Route
+            path="/usuario"
+            element={
+              <Layout> {/* Etiqueta de apertura <Layout> agregada */}
+                <UserPage
+                  savedWorks={savedWorks}
+                  onDeleteSavedWork={handleDeleteSavedWork}
+                  investigaciones={investigaciones}
+                  selectedFilters={selectedFilters}
+                  handleFilterChange={handleFilterChange}
+                />
+              </Layout> /* Etiqueta de cierre </Layout> agregada */
+            }
+          />
+          <Route
+            path="/profesor"
+            element={
+              <Layout> {/* Etiqueta de apertura <Layout> agregada */}
+                <ProfessorPage
+                  investigaciones={investigaciones}
+                  onDeleteSavedWork={handleDeleteSavedWork} 
+                />
+              </Layout> /* Etiqueta de cierre </Layout> agregada */
+            }
+          />
+          <Route 
+            path="/busqueda" 
+            element={
+              <Layout>
+                <SearchBar searchTerm={searchTerm} onSearch={setSearchTerm} />
+                <Navigation /> 
+                <SearchPage
+                  filteredInvestigaciones={filteredInvestigaciones}
+                  searchTerm={searchTerm}
+                  selectedFilters={selectedFilters}
+                  handleFilterChange={handleFilterChange} 
+                />
+              </Layout> /* Etiqueta de cierre </Layout> agregada */
+            } 
+          />
         </Routes>
       </div>
     </Router>
