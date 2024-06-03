@@ -1,6 +1,6 @@
-
 body {
   margin: 0; /* Elimina el margen predeterminado del body */
+  overflow: hidden;
 }
 
 .header { /* Estilos para la barra superior */
@@ -8,63 +8,68 @@ body {
   height: 60px;
 }
 
-.login-container {
+.login-wrapper {
   display: flex;
   flex-direction: column;
-  width: 400px; /* Ajusta el ancho según tus necesidades */
-  margin: 20px auto; /* Centra horizontalmente y agrega margen superior */
-  padding: 30px;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
 }
 
-.login-container img {
-  width: 150px; /* Ajusta el tamaño del logo según tus necesidades */
-  height: auto;
-  margin-bottom: 20px;
-  align-self: flex-start; /* Alinea el logo a la izquierda */
+.login-container {
+  width: 400px;
+  margin: 100px auto;
+  padding: 30px; 
+  text-align: center; /* Centra el contenido horizontalmente */
 }
+.login-container img {
+  width: 300px;
+  height: auto;
+}
+
 
 .login-container h2 {
-  align-self: flex-start; /* Alinea el título a la izquierda */
-  margin-bottom: 20px;
+  text-align: center;
+  margin-bottom: 40px;
   color: #333;
 }
-
 .form-group {
-  width: 100%; /* Campos de entrada ocupan todo el ancho */
-  margin-bottom: 15px;
+  width: 100%;
+  margin-bottom: 20px;
 }
-
 
 .login-container input[type="email"],
 .login-container input[type="password"] {
   width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  padding: 15px; 
+  border: none;
+  border-bottom: 1px solid #ccc;
   box-sizing: border-box;
+  margin-bottom: 25px;
 }
 
 .login-container label {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 5px;
   font-weight: bold;
 }
 
 .login-container button[type="submit"] {
   width: 100%;
-  padding: 14px;
+  padding: 12px;
   background-color: #f89100;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
   cursor: pointer;
   font-weight: bold;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .login-container a {
   display: block;
   text-align: center;
-  margin-top: 15px;
   color: #f89100;
+  margin-top: 20px;
   text-decoration: none;
 }
