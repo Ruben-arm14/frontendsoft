@@ -14,4 +14,5 @@ function ResultsPage({ filteredInvestigaciones, searchTerm, selectedFilters, han
     </div>
   );
 }
+
 export default ResultsPage;

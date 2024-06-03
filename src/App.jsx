@@ -6,7 +6,6 @@ import UserPage from './pages/UserPage';
 import ProfessorPage from './pages/ProfessorPage';
 import SearchPage from './pages/SearchPage';
 import Login from './pages/Login';
-import ResultsPage from './pages/ResultsPage';
 import Layout from './components/Layout';
 import investigaciones from './data';
 import './App.css';
@@ -31,14 +30,6 @@ function App() {
   const handleDeleteSavedWork = (workId) => {
     setSavedWorks(prevSavedWorks => prevSavedWorks.filter(work => work.id !== workId));
   };
-
-  const filteredInvestigaciones = investigaciones.filter(inv => {
-    const titleMatch = inv.title.toLowerCase().includes(searchTerm.toLowerCase());
-    const areaMatch = selectedFilters.area.length === 0 || selectedFilters.area.includes(inv.area);
-    const periodMatch = selectedFilters.period.length === 0 || selectedFilters.period.includes(inv.period);
-    return titleMatch && areaMatch && periodMatch;
-  });
-
   return (
     <Router>
       <div className="app-container">
@@ -48,8 +39,8 @@ function App() {
             <Layout>
               <SearchBar searchTerm={searchTerm} onSearch={setSearchTerm} />
               <Navigation /> 
-              <ResultsPage 
-                filteredInvestigaciones={filteredInvestigaciones}
+              <SearchPage // Usamos SearchPage en la ruta /resultados
+                investigaciones={investigaciones}
                 searchTerm={searchTerm}
                 selectedFilters={selectedFilters}
                 handleFilterChange={handleFilterChange} 
@@ -80,7 +71,7 @@ function App() {
               <SearchBar searchTerm={searchTerm} onSearch={setSearchTerm} />
               <Navigation /> 
               <SearchPage
-                filteredInvestigaciones={filteredInvestigaciones}
+                investigaciones={investigaciones}
                 searchTerm={searchTerm}
                 selectedFilters={selectedFilters}
                 handleFilterChange={handleFilterChange} 

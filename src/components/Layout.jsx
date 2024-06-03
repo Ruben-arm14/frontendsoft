@@ -1,3 +1,4 @@
+// Layout.jsx
 import React from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import Header from './Header';
@@ -7,8 +8,8 @@ function Layout() {
 
   return (
     <>
-      {location.pathname !== '/' && <Header />}
-      <Outlet /> 
+      <Outlet /> {/* Renderiza el contenido de la ruta actual primero */}
+      {location.pathname !== '/' && <Header />} 
     </>
   );
 }
