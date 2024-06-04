@@ -6,10 +6,10 @@ function Layout() {
   const location = useLocation();
 
   return (
-    <>
-      <Outlet />
+    <div>
+      <Outlet />  {/* Renderiza Outlet primero */}
       {location.pathname !== '/' && <Header />} 
-    </>
+    </div>
   );
 }
 
