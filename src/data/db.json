@@ -1,6 +1,5 @@
 {
   "investigaciones": [
     { "id": 1, "title": "Investigación 1", "area": "Software", "curso": "Seminario I" },
-    // ... otras investigaciones
   ]
 }

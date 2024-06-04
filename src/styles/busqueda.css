@@ -1,9 +1,21 @@
 /* Busqueda.css */
+.busqueda-pagina {
+  display: flex; /* Distribuye los elementos verticalmente */
+  flex-direction: column;
+  padding: 20px;
+}
+
 .busqueda-container {
-    display: flex;
-    gap: 20px;
+  display: flex;
+  flex-direction: column; /* Apila los elementos verticalmente */
+  gap: 20px;
+  padding: 20px;
+  align-items: center; /* Centra los elementos horizontalmente */
+}
+  .busqueda-container h2 { /* Título "Lo más trabajado" */
+    font-size: 20px;
+    margin-bottom: 20px;
   }
-  
   .filter-section {
     display: flex;
     flex-direction: column;
@@ -20,7 +32,10 @@
   }
   
   .filters {
-    width: 300px;
+    display: flex;
+    flex-direction: column; /* Alinea los filtros verticalmente */
+    gap: 10px;
+    width: 250px; /* Ancho de los filtros */
   }
   
   .filter-section h3 {
@@ -30,10 +45,11 @@
   }
   
   .filter {
-    padding: 8px 12px;
+    padding: 10px; /* Aumenta el padding */
+    margin-bottom: 10px; /* Espacio entre filtros */
+    border: 1px solid #ccc; /* Borde */
     border-radius: 5px;
     cursor: pointer;
-    margin-bottom: 5px;
     background-color: #f0f0f0;
     transition: background-color 0.3s ease; /* Transición suave */
   }
@@ -48,6 +64,7 @@
   }
   
   .search-bar {
+    width: 80%;
     background-color: #F26522;
     color: white;
     padding: 15px;
@@ -76,11 +93,15 @@
     overflow-y: auto; /* Permitir scroll vertical si es necesario */
   }
   
-  .results-list > div {
+  .results-list > div { /* Estilo de tarjeta para los resultados */
     background-color: #fff;
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: 10px;
+  }
+  .results-container {
+    flex: 1; /* Ocupa el espacio restante */
+    overflow-y: auto; /* Agrega scroll vertical si es necesario */
   }
   

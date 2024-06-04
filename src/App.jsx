@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Register from './pages/Register'; // Nuevo componente de página principal
 import Login from './pages/Login';
 import Busqueda from './pages/Busqueda';
+import Register from './pages/Register'; // Importar el componente Register
 import './styles/App.css';
 
 function App() {
@@ -26,7 +26,7 @@ function App() {
       <div className="app-container">
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/registro" element={<Register />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/busqueda" element={<Busqueda 
             searchTerm={searchTerm} 
             setSearchTerm={setSearchTerm} 

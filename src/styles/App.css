@@ -20,6 +20,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-radius: 0; /* Elimina los bordes redondeados */
+  margin-bottom: 0; /* Elimina el margen inferior */
 }
 
 .header h1 {
@@ -44,6 +46,7 @@ body {
 }
 
 .home-link {
+  margin-right: 20px;
   color: white;
   text-decoration: none;
   font-size: 16px;
