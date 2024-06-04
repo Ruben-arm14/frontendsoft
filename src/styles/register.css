@@ -1,60 +1,74 @@
 /* register.css */
 
-.register-container {
+body {
+    font-family: Arial, sans-serif;
+    background-color: white; /* Fondo blanco */
+  }
+  
+  .register-container {
+    width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Dos columnas: 1 para el formulario, 2 para las imágenes */
+    gap: 20px; /* Espacio entre columnas */
+  }
+  
+  .register-container form {
+    grid-column: 1 / 2; /* El formulario ocupa la primera columna */
+    width: 50%;
+  }
+  
+  .image-container {
+    grid-column: 2 / 3; /* Las imágenes ocupan la segunda columna */
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 30px;
-    background-color: #f4f4f4; /* Color de fondo gris claro */
+    justify-content: space-between;
   }
+  
+  .image-container img {
+    width: 100px; /* Ajusta el ancho según tus necesidades */
+    height: auto;
+    border-radius: 8px;
+  }
+  
   
   .register-title {
     font-size: 24px;
-    margin-bottom: 20px;
-    color: #333; /* Color de texto oscuro */
+    margin-bottom: 40px;
+    color: #333;
   }
   
   .input-row {
     display: flex;
     justify-content: space-between;
-    width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 20px; /* Espacio entre filas */
   }
   
   .input-row > div {
-    flex: 1; /* Para que los campos ocupen el mismo espacio */
-    margin-right: 15px; /* Espacio entre los campos */
+    width: 48%; /* Dos columnas de igual ancho */
   }
   
-  .input-row > div:last-child {
-    margin-right: 0; /* Elimina el margen del último campo */
-  }
-  
-  /* Estilos para los FormInput (puedes personalizarlos) */
-  .form-group {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .form-group label {
-    font-weight: bold;
-    margin-bottom: 5px;
+  .input-row > div:first-child {
+    margin-right: 2%; /* Espacio entre campos en la misma fila */
   }
   
   .form-group input[type="text"],
   .form-group input[type="email"],
   .form-group input[type="password"] {
-    padding: 10px;
-    border: 1px solid #ccc;
+    width: 100%;
+    padding: 12px; /* Padding más grande */
+    border: 1px solid #ccc; /* Borde en todos los lados */
     border-radius: 4px;
+    box-sizing: border-box;
   }
   
-  .error-message {
-    color: red;
-    font-size: 12px;
-    margin-top: 5px;
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
   }
   
   .register-button {
@@ -65,5 +79,13 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    margin-top: 40px; /* Margen superior más grande */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  }
+  
+  .error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
   }
   

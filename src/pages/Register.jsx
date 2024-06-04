@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import FormInput from '../components/common/FormInput';
 import '../styles/register.css';
+import imagen1 from '../images/imagen1.png'; // Asegúrate de tener la ruta correcta
+import imagen2 from '../images/imagen2.png';
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -82,7 +84,12 @@ function Register() {
 
   return (
     <div className="register-container">
-      <h2 className="register-title">Crea tu cuenta</h2>
+  <div className="image-container">
+    <img src={imagen1} alt="Imagen 1" />
+    <img src={imagen2} alt="Imagen 2" />
+  </div>
+
+    <h2 className="register-title">Crea tu cuenta</h2>
 
       <form onSubmit={handleSubmit}>
         <div className="input-row">
