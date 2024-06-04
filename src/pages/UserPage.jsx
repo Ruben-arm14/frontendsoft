@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/HomePage.css'; // Asegúrate de crear este archivo CSS
+import '../styles/UserPage.css'; // Asegúrate de crear este archivo CSS
 
 function HomePage() {
   return (
