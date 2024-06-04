@@ -1,6 +1,5 @@
-import React from 'react';
-
-function FilterSection({ title, filters, selectedFilters, handleFilterChange }) {
+// FilterSection.jsx
+function FilterSection({ title, filters, selectedFilters, onFilterChange }) {
   return (
     <div className="filter-section">
       <h3>{title}</h3>
@@ -8,9 +7,9 @@ function FilterSection({ title, filters, selectedFilters, handleFilterChange }) 
         <div
           key={filter}
           className={`filter ${selectedFilters.includes(filter) ? 'active' : ''}`}
-          onClick={() => handleFilterChange(filter)}
+          onClick={() => onFilterChange(filter)} // Pasa solo el filtro
         >
-          {filter}
+          {filter} ({selectedFilters.includes(filter) ? '✓' : ''})
         </div>
       ))}
     </div>

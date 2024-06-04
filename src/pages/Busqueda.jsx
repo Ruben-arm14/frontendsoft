@@ -3,54 +3,69 @@ import Header from '../components/Header';
 import SearchBar from '../components/SearchBar';
 import FilterSection from '../components/FilterSection';
 import ResultsList from '../components/ResultsList';
+import investigaciones from '../data/db.json';
 import '../styles/Busqueda.css';
 
-function Busqueda({ investigaciones, searchTerm, setSearchTerm, selectedFilters, handleFilterChange }) {
+function Busqueda() {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedFilters, setSelectedFilters] = useState({
+    area: [],
+    curso: [],
+  });
+
+  // Cargar investigaciones desde db.json (reemplaza con tu lógica real)
+  const [investigaciones, setInvestigaciones] = useState([]);
+  useEffect(() => {
+    setInvestigaciones(db.json.investigaciones); // Asumiendo que db.json tiene la propiedad 'investigaciones'
+  }, []);
+
   const [filters, setFilters] = useState({
     area: {},
-    curso: {}
+    curso: {},
   });
 
   useEffect(() => {
-    // Lógica de filtrado
-    const filteredInvestigaciones = investigaciones.filter(inv => {
-        const titleMatch = inv.title.toLowerCase().includes(searchTerm.toLowerCase());
-        const areaMatch = selectedFilters.area.length === 0 || selectedFilters.area.includes(inv.area);
-        const periodMatch = selectedFilters.curso.length === 0 || selectedFilters.curso.includes(inv.curso);
-        return titleMatch && areaMatch && periodMatch;
-    });
-
-    // Calcular filtros y conteos
     const newFilters = {
       area: {},
       curso: {},
     };
-    filteredInvestigaciones.forEach(inv => { 
+
+    investigaciones.forEach(inv => {
       if (inv.area && !newFilters.area[inv.area]) {
         newFilters.area[inv.area] = 0;
       }
-      if (inv.area) {
-        newFilters.area[inv.area]++;
-      }
+      newFilters.area[inv.area] = (newFilters.area[inv.area] || 0) + 1; 
 
       if (inv.curso && !newFilters.curso[inv.curso]) {
         newFilters.curso[inv.curso] = 0;
       }
-      if (inv.curso) {
-        newFilters.curso[inv.curso]++;
-      }
+      newFilters.curso[inv.curso] = (newFilters.curso[inv.curso] || 0) + 1; 
     });
 
-    setFilters(newFilters); // Actualiza los filtros
+    setFilters(newFilters);
+  }, [investigaciones]);
 
-    // ... (resto del JSX)
-  }, [investigaciones, searchTerm, selectedFilters]); // Todas las dependencias necesarias
+  const filteredInvestigaciones = investigaciones.filter(inv => {
+    const titleMatch = inv.title.toLowerCase().includes(searchTerm.toLowerCase());
+    const areaMatch = selectedFilters.area.length === 0 || selectedFilters.area.includes(inv.area);
+    const periodMatch = selectedFilters.curso.length === 0 || selectedFilters.curso.includes(inv.curso);
+    return titleMatch && areaMatch && periodMatch;
+  });
+
+  const handleFilterChange = (filterType, filterValue) => {
+    setSelectedFilters(prevFilters => ({
+      ...prevFilters,
+      [filterType]: prevFilters[filterType].includes(filterValue)
+        ? prevFilters[filterType].filter(item => item !== filterValue)
+        : [...prevFilters[filterType], filterValue]
+    }));
+  };
 
   return (
     <div>
       <Header />
-      <SearchBar searchTerm={searchTerm} onSearch={setSearchTerm} />
 
+      <SearchBar searchTerm={searchTerm} onSearch={setSearchTerm} />
       <div className="content">
         <div className="filters">
           <FilterSection 
@@ -66,7 +81,6 @@ function Busqueda({ investigaciones, searchTerm, setSearchTerm, selectedFilters,
             handleFilterChange={(value) => handleFilterChange('curso', value)}
           />
         </div>
-
         <ResultsList investigaciones={filteredInvestigaciones} />
       </div>
     </div>

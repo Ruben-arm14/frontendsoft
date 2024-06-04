@@ -1,9 +1,6 @@
 {
-    "users": [
-      { "id": 1, "name": "admin", "email": "admin@example.com", "password": "admin", "role": "profesor" }
-    ],
-    "books": [
-
-    ]
-  }
-  
+  "investigaciones": [
+    { "id": 1, "title": "Investigación 1", "area": "Software", "curso": "Seminario I" },
+    // ... otras investigaciones
+  ]
+}
