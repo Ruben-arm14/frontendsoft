@@ -1,0 +1,76 @@
+/* Busqueda.css */
+.busqueda-container {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .filter-section {
+    display: flex;
+    flex-direction: column;
+    width: 250px; /* Ancho de la sección de filtros */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .filter-section h3 {
+    margin-top: 0;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .filter {
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 5px;
+    background-color: #f0f0f0;
+    transition: background-color 0.3s ease; /* Transición suave */
+  }
+  
+  .filter:hover {
+    background-color: #e0e0e0; /* Color de fondo al pasar el mouse */
+  }
+  
+  .filter.active {
+    background-color: #F26522; /* Color de fondo cuando está activo */
+    color: white;
+  }
+  
+  .search-bar {
+    background-color: #F26522;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+  }
+  
+  .search-bar input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+  
+  .search-bar button {
+    background-color: white;
+    color: #F26522;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .results-list {
+    flex-grow: 1; /* Ocupa el espacio restante */
+  }
+  
+  .results-list > div {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+  }
+  
