@@ -4,7 +4,11 @@ body {
     font-family: Arial, sans-serif;
     background-color: white; /* Fondo blanco */
   }
-  
+  .register-container .register-title {
+    color: #F26522; /* Naranja */
+    font-size: 50px; /* Tamaño de letra más grande */
+  }
+
   .register-container {
     width: 90%; /* Ocupa el 80% del ancho disponible */
     margin: 50px auto;
@@ -13,16 +17,9 @@ body {
     border-radius: 10px;
     display: flex; /* Usamos Flexbox para distribuir */
     align-items: center;
-    justify-content: center; 
-}
-
-  .form-wrapper {
-    width: 50%;
-    align-self: flex-start; /* Alinea el formulario al inicio (izquierda) */
   }
-  .image-container {
-    float: right;
-    width: 350px;
+.form-wrapper {
+    width: 50%; /* Alinea el formulario al inicio (izquierda) */
   }
   .image-container img {
     width: 100%; 
@@ -110,6 +107,18 @@ body {
     right: 20px;
     width: 120px; /* Ajusta el tamaño según tus necesidades */
     height: auto;
+  }
+  .image-left {
+    justify-self: flex-start; /* Position left image */
+    margin-bottom: 250px; /* Ajusta el valor para mover la imagen hacia arriba */
+    padding-left: 20px;
+
+  }
+  
+  .image-right {
+    justify-self: flex-end; /* Position right image */
+    margin-top: 300px;
+    padding-left: 100px;
   }
   
   

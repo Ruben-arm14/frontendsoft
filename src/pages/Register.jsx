@@ -150,10 +150,12 @@ function Register() {
         <button type="submit" className="register-button">Crea cuenta</button>
       </form>
       </div>
-      <div className="image-container">
-        <img src={imagen1} alt="Imagen 1" />
-        <img src={imagen2} alt="Imagen 2" />
-      </div>
+      <div className="image-wrapper">
+    <img src={imagen1} alt="Imagen 1" className="image-left" />
+  </div>
+  <div className="image-wrapper">
+    <img src={imagen2} alt="Imagen 2" className="image-right" />
+  </div>
     </div>
   );
 }

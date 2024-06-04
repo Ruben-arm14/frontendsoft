@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/login.css'; // Importa tu archivo CSS
 import logoicon from '../images/logo.png';  
-
+import { Link } from 'react-router-dom';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -39,7 +39,7 @@ function Login() {
           </div>
           <button type="submit">Ingresar</button>
         </form>
-        <a href="/register">Crear cuenta</a>
+        <Link to="/register">Regístrate aquí</Link>
       </div>
     </div>
   );
