@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import profileIcon from '../perfil.png';
+import profileIcon from '../images/perfil.png'; // Corregir la ruta de la imagen
+import '../index.css'; // Corregir la ruta del CSS
+
 
 function Header() {
   const location = useLocation();

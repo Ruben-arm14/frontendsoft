@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import './login.css'; // Importa tu archivo CSS
-import logoicon from '../logo.png';  
+import '../styles/login.css'; // Importa tu archivo CSS
+import logoicon from '../images/logo.png';  
 
 
 function Login() {
