@@ -84,14 +84,10 @@ function Register() {
 
   return (
     <div className="register-container">
-  <div className="image-container">
-    <img src={imagen1} alt="Imagen 1" />
-    <img src={imagen2} alt="Imagen 2" />
-  </div>
-
-    <h2 className="register-title">Crea tu cuenta</h2>
-
+    <div className="form-wrapper">
       <form onSubmit={handleSubmit}>
+        <h2 className="register-title">Crea tu cuenta</h2>
+
         <div className="input-row">
           <FormInput
             label="Nombres"
@@ -102,23 +98,23 @@ function Register() {
             error={errors.nombres}
           />
           <FormInput
-            label="Correo"
-            type="email"
-            name="correo"
-            value={formData.correo}
-            onChange={handleChange}
-            error={errors.correo}
-          />
-        </div>
-
-        <div className="input-row">
-          <FormInput
             label="Apellidos"
             type="text"
             name="apellidos"
             value={formData.apellidos}
             onChange={handleChange}
             error={errors.apellidos}
+          />
+        </div>
+
+        <div className="input-row">
+          <FormInput
+            label="Correo"
+            type="email"
+            name="correo"
+            value={formData.correo}
+            onChange={handleChange}
+            error={errors.correo}
           />
           <FormInput
             label="Contraseña"
@@ -153,6 +149,11 @@ function Register() {
 
         <button type="submit" className="register-button">Crea cuenta</button>
       </form>
+      </div>
+      <div className="image-container">
+        <img src={imagen1} alt="Imagen 1" />
+        <img src={imagen2} alt="Imagen 2" />
+      </div>
     </div>
   );
 }
