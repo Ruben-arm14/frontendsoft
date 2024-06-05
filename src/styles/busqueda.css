@@ -1,17 +1,16 @@
 /* Busqueda.css */
 .busqueda-container {
   display: flex;
-  flex-direction: column; /* Apilamos los elementos verticalmente */
-  align-items: center;   /* Centramos horizontalmente */
+  flex-direction: column;
+  align-items: flex-end; /* Alinea los elementos a la derecha */
   gap: 20px;
   padding: 20px;
   max-width: 1200px;
   margin: 0 auto;
 }
-
 .content {
   display: flex;
-  flex-direction: column; /* Cambiamos a column */
+  flex-direction: row-reverse; /* Invierte el orden de los elementos */
   width: 100%;
 }
 
