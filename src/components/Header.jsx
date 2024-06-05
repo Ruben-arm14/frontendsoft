@@ -9,11 +9,13 @@ function Header() {
 
   return (
     <header className="header">
-      {location.pathname !== '/' && ( 
-        <Link to="/" className="home-link">Home Page</Link>
-      )}
-
       <h1>Lumen Investiga</h1>
+      {location.pathname !== '/' && ( 
+        <Link to="/" className="home-link"> <>
+        <span className="profile-text">Perfil</span>
+        <img src={profileIcon} alt="Profile icon" className="profile-icon" />
+      </></Link>
+      )}
 
       <div className="profile-container">
         {location.pathname === '/usuario' ? ( 

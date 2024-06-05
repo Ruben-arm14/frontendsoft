@@ -44,6 +44,7 @@ function Busqueda() {
       <Header />
       <div className="busqueda-container">
         <div className="filters">
+        <h2>Los más trabajado</h2>
           <FilterSection 
             title="Área"
             filters={Object.keys(filters.area)}

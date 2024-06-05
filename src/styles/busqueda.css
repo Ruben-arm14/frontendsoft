@@ -4,14 +4,8 @@
   flex-direction: column;
   align-items: flex-end; /* Alinea los elementos a la derecha */
   gap: 20px;
-  padding: 20px;
   max-width: 1200px;
-  margin: 0 auto;
-}
-.content {
-  display: flex;
-  flex-direction: row-reverse; /* Invierte el orden de los elementos */
-  width: 100%;
+  padding-left: 750px;
 }
 
 .filters {
@@ -33,28 +27,6 @@
   margin: 0; /* Eliminamos el margen inferior */
 }
 
-
-.filter {
-  background-color: white; /* Fondo blanco para los filtros */
-  color: #333; /* Color de texto oscuro */
-  padding: 10px 15px; /* Aumentamos el padding */
-  border: none;
-  border-bottom: 1px solid #eee; /* Línea divisoria sutil */
-  text-align: left;
-  width: 100%;
-  display: flex;
-  justify-content: space-between; /* Distribuye el texto y el número */
-}
-
-.filter:hover {
-  background-color: #e0e0e0;
-}
-
-.filter.active {
-  background-color: #F26522;
-  color: white;
-}
-
 /* Estilos para la barra de búsqueda */
 .search-bar {
   background-color: white; /* Fondo blanco para la barra de búsqueda */
@@ -62,8 +34,11 @@
   border: 1px solid #ccc; /* Borde gris claro */
   border-radius: 8px;
   padding: 15px;
-  width: 60%; 
+  width: 1200px; 
   display: flex;
+  flex-grow: 1;
+  margin-left: 100px;
+  margin-top: 100px;
   align-items: center;
 }
 
@@ -108,4 +83,14 @@
 .filter.active {
   background-color: #F26522;
   color: white;
+}
+ 
+.header h1{
+  padding-right: 1300px;
+  font-size: 55px;
+}
+
+.profile-text{
+  margin-left: 250px;
+  font-size: 20px;
 }

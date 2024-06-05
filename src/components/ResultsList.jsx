@@ -1,20 +1,14 @@
+// ResultsList.jsx
 import React from 'react';
 import ResultItem from './ResultItem';
 
-function ResultsList({ investigaciones, searchTerm, selectedFilters }) {
-  const filteredInvestigaciones = investigaciones.filter(inv => {
-    const titleMatch = inv.title.toLowerCase().includes(searchTerm.toLowerCase());
-    const areaMatch = selectedFilters.area.length === 0 || selectedFilters.area.includes(inv.area);
-    const cursoMatch = selectedFilters.curso.length === 0 || selectedFilters.curso.includes(inv.curso);
-    return titleMatch && areaMatch && cursoMatch;
-  });
-
+function ResultsList({ investigaciones }) {
   return (
     <div className="results-list">
-      <h2>Resultados ({filteredInvestigaciones.length})</h2>
-      {filteredInvestigaciones.length > 0 ? (
-        filteredInvestigaciones.map(inv => (
-          <ResultItem key={inv.id} inv={inv} />
+      <h2>Resultados ({investigaciones.length})</h2>
+      {investigaciones.length > 0 ? (
+        investigaciones.map(investigacion => ( // Cambiamos inv por investigacion
+          <ResultItem key={investigacion.id} investigacion={investigacion} /> // Pasamos investigacion como prop
         ))
       ) : (
         <p>No se encontraron resultados.</p>
