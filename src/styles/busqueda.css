@@ -1,107 +1,112 @@
 /* Busqueda.css */
-.busqueda-pagina {
-  display: flex; /* Distribuye los elementos verticalmente */
-  flex-direction: column;
-  padding: 20px;
-}
-
 .busqueda-container {
   display: flex;
-  flex-direction: column; /* Apila los elementos verticalmente */
+  flex-direction: column; /* Apilamos los elementos verticalmente */
+  align-items: center;   /* Centramos horizontalmente */
   gap: 20px;
   padding: 20px;
-  align-items: center; /* Centra los elementos horizontalmente */
+  max-width: 1200px;
+  margin: 0 auto;
 }
-  .busqueda-container h2 { /* Título "Lo más trabajado" */
-    font-size: 20px;
-    margin-bottom: 20px;
-  }
-  .filter-section {
-    display: flex;
-    flex-direction: column;
-    width: 250px; /* Ancho de la sección de filtros */
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  .content {
-    display: flex;
-    flex-direction: row; /* Corregir la dirección del flex */
-    gap: 20px;
-  }
-  
-  .filters {
-    display: flex;
-    flex-direction: column; /* Alinea los filtros verticalmente */
-    gap: 10px;
-    width: 250px; /* Ancho de los filtros */
-  }
-  
-  .filter-section h3 {
-    margin-top: 0;
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-  
-  .filter {
-    padding: 10px; /* Aumenta el padding */
-    margin-bottom: 10px; /* Espacio entre filtros */
-    border: 1px solid #ccc; /* Borde */
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: #f0f0f0;
-    transition: background-color 0.3s ease; /* Transición suave */
-  }
-  
-  .filter:hover {
-    background-color: #e0e0e0; /* Color de fondo al pasar el mouse */
-  }
-  
-  .filter.active {
-    background-color: #F26522; /* Color de fondo cuando está activo */
-    color: white;
-  }
-  
-  .search-bar {
-    width: 80%;
-    background-color: #F26522;
-    color: white;
-    padding: 15px;
-    border-radius: 8px;
-  }
-  
-  .search-bar input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    margin-right: 10px;
-  }
-  
-  .search-bar button {
-    background-color: white;
-    color: #F26522;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .results-list {
-    flex-grow: 1;
-    overflow-y: auto; /* Permitir scroll vertical si es necesario */
-  }
-  
-  .results-list > div { /* Estilo de tarjeta para los resultados */
-    background-color: #fff;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 10px;
-  }
-  .results-container {
-    flex: 1; /* Ocupa el espacio restante */
-    overflow-y: auto; /* Agrega scroll vertical si es necesario */
-  }
-  
+
+.content {
+  display: flex;
+  flex-direction: column; /* Cambiamos a column */
+  width: 100%;
+}
+
+.filters {
+  width: 250px; /* Ancho fijo para los filtros */
+  background-color: #F8F8F8; /* Fondo gris claro para el contenedor de filtros */
+  padding: 20px;
+  border-radius: 8px;
+}
+.filter-section {
+  background-color: transparent; /* Fondo transparente para las secciones */
+  box-shadow: none;
+}
+
+.filter-section h3 {
+  background-color: #F26522;
+  color: white;
+  padding: 10px 15px; /* Aumentamos el padding */
+  border-radius: 8px 8px 0 0;
+  margin: 0; /* Eliminamos el margen inferior */
+}
+
+
+.filter {
+  background-color: white; /* Fondo blanco para los filtros */
+  color: #333; /* Color de texto oscuro */
+  padding: 10px 15px; /* Aumentamos el padding */
+  border: none;
+  border-bottom: 1px solid #eee; /* Línea divisoria sutil */
+  text-align: left;
+  width: 100%;
+  display: flex;
+  justify-content: space-between; /* Distribuye el texto y el número */
+}
+
+.filter:hover {
+  background-color: #e0e0e0;
+}
+
+.filter.active {
+  background-color: #F26522;
+  color: white;
+}
+
+/* Estilos para la barra de búsqueda */
+.search-bar {
+  background-color: white; /* Fondo blanco para la barra de búsqueda */
+  color: #333; /* Color de texto oscuro */
+  border: 1px solid #ccc; /* Borde gris claro */
+  border-radius: 8px;
+  padding: 15px;
+  width: 60%; 
+  display: flex;
+  align-items: center;
+}
+
+.search-bar input[type="text"] {
+  flex-grow: 1; /* El input ocupa el espacio restante */
+  padding: 10px;
+  border: none; /* Eliminamos el borde del input */
+  outline: none; /* Eliminamos el outline al hacer focus */
+}
+
+.search-bar .search-icon {
+  margin-right: 10px;
+  color: #999; /* Color gris claro para el ícono */
+}
+
+.search-bar button {
+  background-color: #F26522; /* Fondo naranja para el botón */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Estilos para la lista de resultados */
+.results-list {
+  width: 100%; /* Ajusta el ancho según tus necesidades */
+}
+
+.results-list > div {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+}
+.filter:last-child {
+  border-bottom: none; /* Elimina el borde inferior del último filtro */
+}
+
+.filter.active {
+  background-color: #F26522;
+  color: white;
+}

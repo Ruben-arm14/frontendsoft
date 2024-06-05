@@ -1,8 +1,8 @@
+// Busqueda.jsx
 import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import SearchBar from '../components/SearchBar';
 import FilterSection from '../components/FilterSection';
-import ResultsList from '../components/ResultsList';
 import '../styles/Busqueda.css';
 
 function Busqueda() {
@@ -11,15 +11,24 @@ function Busqueda() {
     area: [],
     curso: [],
   });
+  const [filters, setFilters] = useState({
+    area: {},
+    curso: {},
+  });
+
+  // Cargar datos de investigaciones (reemplaza con tu lógica real)
   const [investigaciones, setInvestigaciones] = useState([]);
 
   useEffect(() => {
-    // Lógica para cargar datos de investigaciones (reemplaza con tu lógica real)
-    fetch('https://jsonplaceholder.typicode.com/posts?_limit=10') // Ejemplo de carga de datos desde una API
-      .then(response => response.json())
-      .then(data => setInvestigaciones(data))
-      .catch(error => console.error('Error fetching data:', error));
-  }, []); // Ejecutar solo una vez al montar el componente
+    // Simulación de carga de datos desde db.json
+    setInvestigaciones([
+      { id: 1, title: 'Investigación 1', area: 'Software', curso: 'Seminario I' },
+      { id: 2, title: 'Investigación 2', area: 'IoT', curso: 'TPI' },
+      { id: 3, title: 'Investigación 3', area: 'Software', curso: 'Seminario II' },
+      { id: 4, title: 'Investigación 4', area: 'Cloud Computing', curso: 'Seminario I' },
+      // ... más investigaciones
+    ]);
+  }, []);
 
   const handleFilterChange = (filterType, filterValue) => {
     setSelectedFilters(prevFilters => ({
@@ -30,38 +39,10 @@ function Busqueda() {
     }));
   };
 
-  // Lógica de filtrado
-  const filteredInvestigaciones = investigaciones.filter(inv => {
-    const titleMatch = inv.title.toLowerCase().includes(searchTerm.toLowerCase());
-    const areaMatch = selectedFilters.area.length === 0 || selectedFilters.area.includes(inv.area || ''); // Asegúrate de que inv.area exista
-    const cursoMatch = selectedFilters.curso.length === 0 || selectedFilters.curso.includes(inv.curso || ''); // Asegúrate de que inv.curso exista
-    return titleMatch && areaMatch && cursoMatch;
-  });
-
-  // Calcular filtros disponibles y sus conteos
-  const filters = {
-    area: {},
-    curso: {},
-  };
-
-  filteredInvestigaciones.forEach(inv => {
-    if (inv.area && !filters.area[inv.area]) {
-      filters.area[inv.area] = 0;
-    }
-    filters.area[inv.area] = (filters.area[inv.area] || 0) + 1;
-
-    if (inv.curso && !filters.curso[inv.curso]) {
-      filters.curso[inv.curso] = 0;
-    }
-    filters.curso[inv.curso] = (filters.curso[inv.curso] || 0) + 1;
-  });
-
   return (
     <div>
       <Header />
-      <SearchBar searchTerm={searchTerm} onSearch={setSearchTerm} /> {/* Mover SearchBar fuera de filters */}
-
-      <div className="content">
+      <div className="busqueda-container">
         <div className="filters">
           <FilterSection 
             title="Área"
@@ -77,9 +58,7 @@ function Busqueda() {
           />
         </div>
       </div>
-      <div className="results-container"> {/* Contenedor para los resultados */}
-        <ResultsList investigaciones={filteredInvestigaciones} />
-      </div>
+      <SearchBar searchTerm={searchTerm} onSearch={setSearchTerm} />
     </div>
   );
 }
