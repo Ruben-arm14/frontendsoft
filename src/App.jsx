@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './pages/Login';
 import Busqueda from './pages/Busqueda';
 import Register from './pages/Register';
+import Perfil from './components/Perfil';
 import './styles/App.css';
 import investigaciones from './data/db.json';
 
@@ -37,6 +38,7 @@ function App() {
               handleFilterChange={handleFilterChange}
             />
           } />
+          <Route path="/perfil" element={<Perfil />} />
         </Routes>
       </div>
     </Router>

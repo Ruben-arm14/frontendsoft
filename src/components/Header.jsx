@@ -11,7 +11,7 @@ function Header() {
     <header className="header">
       <h1>Lumen Investiga</h1>
       {location.pathname !== '/' && ( 
-        <Link to="/" className="home-link"> <>
+        <Link to="/Perfil" className="home-link"> <>
         <span className="profile-text">Perfil</span>
         <img src={profileIcon} alt="Profile icon" className="profile-icon" />
       </></Link>

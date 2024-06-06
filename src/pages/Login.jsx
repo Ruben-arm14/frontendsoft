@@ -39,7 +39,7 @@ function Login() {
           </div>
           <button type="submit">Ingresar</button>
         </form>
-        <Link to="/regist">Regístrate aquí</Link>
+        <Link to="/register">Regístrate aquí</Link>
       </div>
     </div>
   );
