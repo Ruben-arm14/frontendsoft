@@ -1,51 +1,45 @@
-// Busqueda.jsx
 import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import SearchBar from '../components/SearchBar';
 import FilterSection from '../components/FilterSection';
 import '../styles/Busqueda.css';
 
-function Busqueda() {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedFilters, setSelectedFilters] = useState({
-    area: [],
-    curso: [],
-  });
+function Busqueda({ investigaciones, searchTerm, setSearchTerm, selectedFilters, handleFilterChange }) {
   const [filters, setFilters] = useState({
     area: {},
     curso: {},
   });
 
-  // Cargar datos de investigaciones (reemplaza con tu lógica real)
-  const [investigaciones, setInvestigaciones] = useState([]);
-
   useEffect(() => {
-    // Simulación de carga de datos desde db.json
-    setInvestigaciones([
-      { id: 1, title: 'Investigación 1', area: 'Software', curso: 'Seminario I' },
-      { id: 2, title: 'Investigación 2', area: 'IoT', curso: 'TPI' },
-      { id: 3, title: 'Investigación 3', area: 'Software', curso: 'Seminario II' },
-      { id: 4, title: 'Investigación 4', area: 'Cloud Computing', curso: 'Seminario I' },
-      // ... más investigaciones
-    ]);
-  }, []);
+    const newFilters = {
+      area: {},
+      curso: {},
+    };
 
-  const handleFilterChange = (filterType, filterValue) => {
-    setSelectedFilters(prevFilters => ({
-      ...prevFilters,
-      [filterType]: prevFilters[filterType].includes(filterValue)
-        ? prevFilters[filterType].filter(item => item !== filterValue)
-        : [...prevFilters[filterType], filterValue]
-    }));
-  };
+    investigaciones.forEach(inv => {
+      if (inv.area && !newFilters.area[inv.area]) {
+        newFilters.area[inv.area] = 0;
+      }
+      newFilters.area[inv.area] = (newFilters.area[inv.area] || 0) + 1;
+
+      if (inv.curso && !newFilters.curso[inv.curso]) {
+        newFilters.curso[inv.curso] = 0;
+      }
+      newFilters.curso[inv.curso] = (newFilters.curso[inv.curso] || 0) + 1;
+    });
+
+    setFilters(newFilters);
+  }, [investigaciones]);
 
   return (
     <div>
       <Header />
-      <div className="busqueda-container">
+
+      <div className="content">
+        {/* Se movieron los filtros a la derecha de la barra de búsqueda */}
+        <SearchBar searchTerm={searchTerm} onSearch={setSearchTerm} />
         <div className="filters">
-        <h2>Los más trabajado</h2>
-          <FilterSection 
+          <FilterSection
             title="Área"
             filters={Object.keys(filters.area)}
             selectedFilters={selectedFilters.area}
@@ -57,9 +51,8 @@ function Busqueda() {
             selectedFilters={selectedFilters.curso}
             handleFilterChange={(value) => handleFilterChange('curso', value)}
           />
-        </div>
+        </div> 
       </div>
-      <SearchBar searchTerm={searchTerm} onSearch={setSearchTerm} />
     </div>
   );
 }

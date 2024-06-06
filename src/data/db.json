@@ -1,5 +1,8 @@
 {
   "investigaciones": [
     { "id": 1, "title": "Investigación 1", "area": "Software", "curso": "Seminario I" },
+    { "id": 2, "title": "Investigación 2", "area": "IoT", "curso": "TPI" },
+    { "id": 3, "title": "Investigación 3", "area": "Software", "curso": "Seminario II" },
+    { "id": 4, "title": "Investigación 4", "area": "Cloud Computing", "curso": "Seminario I" } 
   ]
 }

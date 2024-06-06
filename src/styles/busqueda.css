@@ -1,44 +1,69 @@
 /* Busqueda.css */
 .busqueda-container {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end; /* Alinea los elementos a la derecha */
   gap: 20px;
-  max-width: 1200px;
-  padding-left: 750px;
-}
-
-.filters {
-  width: 250px; /* Ancho fijo para los filtros */
-  background-color: #F8F8F8; /* Fondo gris claro para el contenedor de filtros */
   padding: 20px;
-  border-radius: 8px;
-}
-.filter-section {
-  background-color: transparent; /* Fondo transparente para las secciones */
-  box-shadow: none;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: px; /* Ejemplo de margen superior */
+  flex-direction: column; /* Apilamos los elementos verticalmente */
+  align-items: center;   /* Centramos horizontalmente */
+  justify-content: center; /* Centramos verticalmente */
 }
 
+.content {
+  display: flex;
+  flex-direction: row; /* Cambia a row para ordenar horizontalmente */
+  justify-content: space-between; /* Distribuye elementos con espacio entre ellos */
+  align-items: flex-start; /* Alinea los elementos al inicio (arriba) */
+  width: 100%;
+}
+
+
+.filter-section {
+  background-color: transparent;
+  box-shadow: none;
+  margin-bottom: 10px; /* Espacio entre secciones de filtros */
+}
+.filter {
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 5px;
+  background-color: #f0f0f0;
+  transition: background-color 0.3s ease;
+  width: 100%; 
+  text-align: left; 
+  border: none;
+}
+.filters {
+  width: 600px; /* Ancho fijo para los filtros */
+  background-color: #F8F8F8; /* Fondo gris claro para el contenedor de filtros */
+  padding: 40px;
+  padding-top: 100px;
+  min-height: 1000px; 
+}
 .filter-section h3 {
+  margin-top: 0;
+  font-size: 18px;
+  margin-bottom: 10px;
   background-color: #F26522;
   color: white;
-  padding: 10px 15px; /* Aumentamos el padding */
+  padding: 10px;
   border-radius: 8px 8px 0 0;
-  margin: 0; /* Eliminamos el margen inferior */
+  width: 100%;
 }
-
-/* Estilos para la barra de búsqueda */
 .search-bar {
-  background-color: white; /* Fondo blanco para la barra de búsqueda */
-  color: #333; /* Color de texto oscuro */
-  border: 1px solid #ccc; /* Borde gris claro */
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #ccc;
   border-radius: 8px;
-  padding: 15px;
-  width: 1200px; 
+  padding: 25px;
+  margin-top: 350px;
+  margin-left: 50px;
+  margin-right: 50px;
+  width: 70%;
   display: flex;
-  flex-grow: 1;
-  margin-left: 100px;
-  margin-top: 100px;
   align-items: center;
 }
 
@@ -66,7 +91,9 @@
 
 /* Estilos para la lista de resultados */
 .results-list {
-  width: 100%; /* Ajusta el ancho según tus necesidades */
+  width: calc(100% - 320px); /* Los resultados ocupan el espacio restante */
+  order: 1; /* Coloca los resultados en la primera columna */
+  overflow-y: auto;
 }
 
 .results-list > div {
@@ -79,6 +106,7 @@
 .filter:last-child {
   border-bottom: none; /* Elimina el borde inferior del último filtro */
 }
+
 
 .filter.active {
   background-color: #F26522;
