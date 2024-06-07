@@ -4,6 +4,7 @@ import Login from './pages/Login';
 import Busqueda from './pages/Busqueda';
 import Register from './pages/Register';
 import Perfil from './components/Perfil';
+import Resultados from './pages/Resultados';
 import './styles/App.css';
 import investigaciones from './data/db.json';
 
@@ -39,6 +40,8 @@ function App() {
             />
           } />
           <Route path="/perfil" element={<Perfil />} />
+          <Route path="/resultados" element={
+            <Resultados />} />
         </Routes>
       </div>
     </Router>

@@ -1,0 +1,62 @@
+/* Busqueda.module.css */
+.busquedaContainer {
+  display: flex;
+  flex-direction: column; /* Apilamos los elementos verticalmente */
+  align-items: center;   /* Centramos horizontalmente */
+  margin: 0 auto; /* Centramos el contenedor */
+}
+
+.filters {
+  width: 600px; /* Ancho fijo para los filtros */
+  background-color: #f0f0f0; /* Fondo gris claro para el contenedor de filtros */
+  padding: 40px;
+  padding-top: 100px;
+  min-height: 1000px; 
+  margin-left: 1250px;
+  margin-bottom: 100px;
+}
+.filter-section {
+  background-color: transparent;
+  box-shadow: none;
+  margin-bottom: 10px; /* Espacio entre secciones de filtros */
+}
+.resultadosContainer {
+  /* Estilos específicos para la página Resultados */
+  display: flex; /* Apilar elementos verticalmente */
+  flex-direction: column; /* Alinear elementos verticalmente */
+  align-items: center; /* Centrar horizontalmente */
+  margin: 0 auto; /* Centrar el contenedor */
+  width: 100%; /* Ancho completo */
+}
+.filter-section h3 {
+  margin-top: 0;
+  font-size: 18px;
+  margin-bottom: 10px;
+  background-color: #F26522; 
+  color: white;
+  padding: 10px;
+  border-radius: 8px 8px 0 0; 
+  width: 100%; 
+}
+
+.filter {
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 5px;
+  background-color: #f0f0f0;
+  transition: background-color 0.3s ease;
+  width: 100%; 
+  text-align: left; 
+  border: none; 
+}
+
+.filter:hover {
+  background-color: #e0e0e0; 
+}
+
+.filter.active {
+  background-color: #F26522; 
+  color: white;
+}
+
