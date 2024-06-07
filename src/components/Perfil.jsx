@@ -61,29 +61,29 @@ function Perfil() {
   return (
     <div>
       <Header />
+      <h2 className={styles.profileTitle}>Mi perfil</h2>
 
       <div className={styles.profileContent}> {/* Contenedor para el título, imagen y formulario */}
-        <h2 className={styles.profileTitle}>Mi perfil</h2>
-
-        <div className={styles.profileContainer}>
-          <div className={styles.imageSection}>
-            <img src={ProfilePicture} alt="Foto de perfil" />
-            {isEditing && ( 
+        <div className={styles.imageSection}>
+          <img src={ProfilePicture} alt="Foto de perfil" />
+          {isEditing && ( 
               <>
                 <label htmlFor="fotoPerfil">Cambiar foto</label>
                 <input type="file" id="fotoPerfil" name="fotoPerfil" onChange={handleImageChange} />
               </>
             )}
-          </div>
-          <div className={styles.formContent}> {/* Nuevo contenedor para el header y el formulario */}
-            <div className={styles.profileHeader}>
-              <div className={styles.tabs}>
-                <button className={styles.activeTab}>Información de la cuenta</button>
-                <button>Trabajos guardados</button>
-              </div>
+            <button type="submit" className={styles.modificarButton3}>Cambiar foto</button>
+        </div>
+        <div className={styles.formContent}>
+          <div className={styles.profileHeader}> 
+            <div className={styles.tabs}>
+              <button className={styles.activeTab}>Información de la cuenta</button>
+              <button>Trabajos guardados</button>
             </div>
-            <form onSubmit={handleSubmit}>
-              <div className={styles.inputRow}>
+          </div>
+        
+          <form onSubmit={handleSubmit}>
+            <div className={styles.inputRow}>
               <div className={styles.formGroup}>
                 <FormInput
                   label="Nombres"
@@ -119,19 +119,15 @@ function Perfil() {
                 />
               </div>
             </div>
-            {isEditing ? (
-              <>
-                <button type="submit" className={styles.modificarButton}>Guardar Cambios</button>
-                <button type="button" onClick={handleCancelClick} className={styles.cancelarButton}>Cancelar</button>
-              </>
-            ) : (
-              <button type="button" onClick={handleEditClick} className={styles.editarButton}>Editar Perfil</button>
-            )}
+            <div className={styles.buttonContainer}>  {/* Contenedor para los botones */}
+                  <button type="submit" className={styles.modificarButton}>Modificar</button>
+                  <button type="button" onClick={handleCancelClick} className={styles.cambiarContrasenaButton}>Cambiar contraseña</button>
+                </div>
             </form>
           </div>
         </div> 
       </div>
-    </div>
+
   );
 }
 
