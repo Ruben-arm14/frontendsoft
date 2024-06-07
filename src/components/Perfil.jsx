@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import FormInput from '../components/common/FormInput';
+import TrabajosGuardados from '../components/TrabajosGuardados';  // Asegúrate de importar el componente correctamente
 import ProfilePicture from '../images/perfil.png';
 import styles from '../styles/Perfil.module.css';
 
@@ -16,9 +17,9 @@ function Perfil() {
   const [isEditing, setIsEditing] = useState(false);
   const [updatedData, setUpdatedData] = useState({ ...userData });
   const [isLoading, setIsLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState('informacion'); // Estado para la pestaña activa
 
   useEffect(() => {
-    // Simulación de carga de datos desde localStorage (reemplaza con tu lógica real)
     const storedUserData = JSON.parse(localStorage.getItem('userData'));
     if (storedUserData) {
       setUserData(storedUserData);
@@ -71,10 +72,10 @@ function Perfil() {
           <div className={styles.imageSection}>
             <img src={updatedData.fotoPerfil ? URL.createObjectURL(updatedData.fotoPerfil) : ProfilePicture} alt="Foto de perfil" />
 
-            {isEditing && ( 
-              <div className={styles.buttonContainer}>
+            {isEditing && (
+              <div className={styles.modificarButton3}>
                 <label htmlFor="fotoPerfil">Cambiar foto</label>
-                <input type="file" id="fotoPerfil" name="fotoPerfil" onChange={handleImageChange} />
+                <input className={styles.modificarButton4} type="file" id="fotoPerfil" name="fotoPerfil" onChange={handleImageChange} />
               </div>
             )}
           </div>
@@ -84,63 +85,78 @@ function Perfil() {
             {/* Pestañas */}
             <div className={styles.profileHeader}>
               <div className={styles.tabs}>
-                <button className={styles.activeTab}>Información de la cuenta</button>
-                <button>Trabajos guardados</button>
+                <button
+                  className={activeTab === 'informacion' ? styles.activeTab : ''}
+                  onClick={() => setActiveTab('informacion')}
+                >
+                  Información de la cuenta
+                </button>
+                <button
+                  className={activeTab === 'trabajos' ? styles.activeTab : ''}
+                  onClick={() => setActiveTab('trabajos')}
+                >
+                  Trabajos guardados
+                </button>
               </div>
             </div>
 
-            {/* Formulario */}
-            <form onSubmit={handleSubmit}>
-              <div className={styles.inputRow}>
-                <div className={styles.formGroup}>
-                  <FormInput
-                    label="Nombres"
-                    type="text"
-                    name="nombres"
-                    value={isEditing ? updatedData.nombres : userData.nombres}
-                    onChange={handleChange}
-                    disabled={!isEditing}
-                  />
-                  <FormInput
-                    label="Apellidos"
-                    type="text"
-                    name="apellidos"
-                    value={isEditing ? updatedData.apellidos : userData.apellidos}
-                    onChange={handleChange}
-                    disabled={!isEditing}
-                  />
-                  <FormInput
-                    label="Código"
-                    type="text"
-                    name="codigo"
-                    value={isEditing ? updatedData.codigo : userData.codigo}
-                    onChange={handleChange}
-                    disabled={!isEditing}
-                  />
-                  <FormInput
-                    label="Correo"
-                    type="email"
-                    name="correo"
-                    value={isEditing ? updatedData.correo : userData.correo}
-                    onChange={handleChange}
-                    disabled={!isEditing}
-                  />
+            {/* Contenido basado en la pestaña activa */}
+            {activeTab === 'informacion' && (
+              <form onSubmit={handleSubmit}>
+                <div className={styles.inputRow}>
+                  <div className={styles.formGroup}>
+                    <FormInput
+                      label="Nombres"
+                      type="text"
+                      name="nombres"
+                      value={isEditing ? updatedData.nombres : userData.nombres}
+                      onChange={handleChange}
+                      disabled={!isEditing}
+                    />
+                    <FormInput
+                      label="Apellidos"
+                      type="text"
+                      name="apellidos"
+                      value={isEditing ? updatedData.apellidos : userData.apellidos}
+                      onChange={handleChange}
+                      disabled={!isEditing}
+                    />
+                    <FormInput
+                      label="Código"
+                      type="text"
+                      name="codigo"
+                      value={isEditing ? updatedData.codigo : userData.codigo}
+                      onChange={handleChange}
+                      disabled={!isEditing}
+                    />
+                    <FormInput
+                      label="Correo"
+                      type="email"
+                      name="correo"
+                      value={isEditing ? updatedData.correo : userData.correo}
+                      onChange={handleChange}
+                      disabled={!isEditing}
+                    />
+                  </div>
                 </div>
-              </div>
 
-              {/* Botones */}
-              <div className={styles.buttonContainer}>
-                {isEditing ? (
-                  <>
-                    <button type="submit" className={styles.modificarButton}>Guardar Cambios</button>
-                    <button type="button" onClick={handleCancelClick} className={styles.cancelarButton}>Cancelar</button>
-                  </>
-                ) : (
-                  <button type="button" onClick={handleEditClick} className={styles.editarButton}>Editar Perfil</button>
-                )}
-                <button type="button" className={styles.cambiarContrasenaButton}>Cambiar contraseña</button>
-              </div>
-            </form>
+                {/* Botones */}
+                <div className={styles.buttonContainer}>
+                  {isEditing ? (
+                    <>
+                      <button type="submit" className={styles.modificarButton}>Guardar Cambios</button>
+                      <button type="button" onClick={handleCancelClick} className={styles.cancelarButton}>Cancelar</button>
+                    </>
+                  ) : (
+                    <button type="button" onClick={handleEditClick} className={styles.editarButton}>Editar Perfil</button>
+                  )}
+                  <button type="button" className={styles.cambiarContrasenaButton}>Cambiar contraseña</button>
+                </div>
+              </form>
+            )}
+            {activeTab === 'trabajos' && (
+              <TrabajosGuardados investigaciones={[]} role="usuario" />
+            )}
           </div>
         </div>
       </div>

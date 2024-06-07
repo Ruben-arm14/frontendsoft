@@ -1,36 +1,28 @@
 /* Perfil.module.css */
 
 /* Contenedor principal del perfil */
-.profileContent {
-  display: flex; /* Usamos Flexbox para la distribución */
-  gap: 30px;    /* Espacio entre el formulario y la imagen */
-  width: 80%;
-  padding-right: 700px;
-  max-width: 800px;
-  margin: 0 auto; /* Centra el contenido en la página */
-  align-items: flex-start; /* Alinea los elementos al inicio (arriba) del contenedor */
+.profileContent {  
+  width: 40%;
+  padding-right: 400px;
+  margin-left: 100px;
 }
 
 /* Título "Mi perfil" */
 .profileTitle {
-  text-align: center;
   color: #F26522;
-  font-size: 55px;
-  padding-right: 1500px;
+  font-size: 60px;
 }
 
 /* Contenedor del formulario */
 .perfilContainer {
   display: flex;
-  flex-direction: column; 
-  width: 60%; 
 }
 
 
 /* Encabezado del perfil (pestañas) */
 .profileHeader {
   background-color: #F8F8F8;
-  padding: 30px;
+  padding: 15px;
   border-radius: 10px 10px 0 0;
   text-align: center;
 }
@@ -38,7 +30,7 @@
 .tabs {
   display: flex;
   justify-content: center; /* Centramos las pestañas */
-  gap: 20px; /* Espacio entre los botones */
+  gap: 25px; /* Espacio entre los botones */
 }
 
 .buttonContainer {
@@ -54,7 +46,7 @@
   cursor: pointer;
   margin-right: 20px; /* Espacio entre los botones */
   padding: 10px 15px; /* Reducimos el padding */
-  border-bottom: 1px solid #ddd; /* Borde inferior sutil en todos los botones */
+  border-bottom: 5px solid #F26522; /* Borde inferior sutil en todos los botones */
 }
 
 .tabs button:last-child { /* Eliminamos el margen del último botón */
@@ -67,14 +59,13 @@
 /* Contenedor de los campos del formulario */
 .formGroup {
   width: 100%;
-  margin-bottom: 20px;
 }
 
 /* Etiquetas de los campos */
 .formGroup label {
   display: block;
   font-weight: bold;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   text-align: left;
 }
 
@@ -82,7 +73,7 @@
 .formGroup input[type="text"],
 .formGroup input[type="email"] {
   width: 100%;
-  padding: 12px;
+  padding: 15px;
   border: none;
   border-bottom: 1px solid #ccc;
   text-align: left;
@@ -94,29 +85,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 40%;
-  justify-content: flex-end; /* Alineamos la imagen abajo */
-  margin-bottom: 20px; /* Espacio inferior para la imagen */
+  width: 50%;
 }
-.imageSection .buttonContainer label { /* Estilos específicos para el botón "Cambiar foto" */
-  background-color: #F26522;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 14px;
-  margin-top: 20px;
-  width: 100%; /* Hacemos que el botón ocupe todo el ancho */
-}
+
 /* Imagen de perfil */
 .imageSection img {
   width: 250px; 
   height: 250px;
   border-radius: 50%;
   object-fit: cover;
-  margin-top: 100px;
-  margin-left: 2400px;
+  margin-bottom: 50px;
+  margin-left: 2300px;
 }
 
 /* Etiqueta del botón para cambiar foto */
@@ -125,6 +104,7 @@
   color: white;
   padding: 10px 15px;
   border: none;
+  margin-bottom: 200px;
   border-radius: 5px;
   cursor: pointer;
   font-size: 14px;
@@ -135,8 +115,6 @@
   margin: 0;
 }
 .imageSection > div { /* Nuevo estilo para el contenedor del label y el input */
-  display: flex; 
-  flex-direction: column; /* Apilamos el label y el input verticalmente */
   align-items: center;
 }
 /* Estilos para los botones */
@@ -154,8 +132,7 @@
   width: 100%;
 }
 
-.modificarButton3{
-  margin-left: 2400px;
+.cancelarButton{
   background-color: #F26522;
   color: white;
   padding: 10px 15px;
@@ -166,3 +143,28 @@
   margin-top: 20px; 
   width: 100%;
 }
+
+.modificarButton4{
+  margin-right: 110px;
+  padding-top: 40px;
+  color: white;
+}
+.modificarButton3{
+  margin-left: 2570px;
+  color: white;
+}
+
+.imageSection .buttonContainer label { /* Estilos específicos para el botón "Cambiar foto" */
+  background-color: #F26522;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  width: 100%; /* Hacemos que el botón ocupe todo el ancho */
+}
+.activeTab {
+  font-weight: bold;
+  border-bottom: 2px solid #000;
+}
+

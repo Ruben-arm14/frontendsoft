@@ -1,14 +1,15 @@
 import React from 'react';
 
-function TrabajosGuardados({ investigaciones, role }) { // Recibe investigaciones y role como props
-  // Lógica para filtrar trabajos según el rol (usuario o profesor)
+const userData = { nombres: 'profesor' }; // Definir userData aquí
+
+function TrabajosGuardados({ investigaciones, role }) {
   const trabajosFiltrados = investigaciones.filter(inv => {
     if (role === 'usuario') {
-      return inv.guardadoPorUsuario; // Filtrar por trabajos guardados por el usuario (implementa esta lógica)
+      return inv.guardadoPorUsuario;
     } else if (role === 'profesor') {
-      return inv.autor === userData.nombres; // Usar userData.nombres
+      return inv.autor === userData.nombres;
     }
-    return false; 
+    return false;
   });
 
   return (
@@ -16,7 +17,7 @@ function TrabajosGuardados({ investigaciones, role }) { // Recibe investigacione
       <h2>{role === 'usuario' ? 'Trabajos Guardados' : 'Trabajos Subidos'}</h2>
       <ul>
         {trabajosFiltrados.map(inv => (
-          <li key={inv.id}>{inv.title}</li> // Muestra el título del trabajo (puedes personalizar esto)
+          <li key={inv.id}>{inv.title}</li>
         ))}
       </ul>
     </div>
