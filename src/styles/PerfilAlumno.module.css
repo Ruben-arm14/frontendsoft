@@ -43,15 +43,14 @@
 }
 
 .tabs button {
-  background-color: transparent;
+  padding: 10px 20px;
   border: none;
-  font-size: 16px;
+  background: none;
   cursor: pointer;
-  margin-right: 20px; /* Espacio entre los botones */
-  padding: 10px 15px; /* Reducimos el padding */
-  border-bottom: 5px solid #F26522; /* Borde inferior sutil en todos los botones */
+  position: relative;
+  font-size: 17px; /* Ajusta el tamaño de la fuente según tus necesidades */
+  font-weight: normal; /* Peso de la fuente normal */
 }
-
 .tabs button:last-child { /* Eliminamos el margen del último botón */
   margin-right: 0;
 }
@@ -59,7 +58,20 @@
 .tabs button.active-tab {
   border-bottom: 2px solid #F26522; /* Subrayado naranja para la pestaña activa */
 }
-
+.activeTab {
+  color: orange;
+  font-weight: bold; /* Letras gruesas */
+  font-size: 18px; /* Letras más grandes */
+}
+.activeTab::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: orange;
+}
 /* Contenedor de los campos del formulario */
 .formGroup {
   width: 100%;

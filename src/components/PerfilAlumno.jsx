@@ -20,7 +20,6 @@ function PerfilAlumno() {
   const [isLoading, setIsLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('informacion');
   const [trabajosGuardados, setTrabajosGuardados] = useState([
-    // Datos simulados para los trabajos guardados
     {
       id: 1,
       title: 'Investigación 1',
@@ -59,19 +58,17 @@ function PerfilAlumno() {
   };
 
   const handleEditClick = () => {
-    // No hay acciones por el momento
-  };
-
-  const handleCancelClick = () => {
-    // No hay acciones por el momento
+    setIsEditing(!isEditing);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsEditing(false);
+    setUserData(updatedData);
+    localStorage.setItem('userData', JSON.stringify(updatedData));
   };
 
   const handleStarClick = (value) => {
-    // Aquí puedes implementar la lógica para manejar la valoración de los trabajos
     console.log('Valoración:', value);
   };
 
@@ -101,8 +98,8 @@ function PerfilAlumno() {
           </div>
         </div>
         <div className={styles.perfilContainer}>
-          <div className={styles.formContent} style={{ margin: 'auto', width: '60%' }}>
-            {activeTab === 'informacion' && (
+          {activeTab === 'informacion' && (
+            <div className={styles.formContent} style={{ margin: 'auto', width: '60%' }}>
               <form onSubmit={handleSubmit}>
                 <div className={styles.inputRow}>
                   <div className={styles.formGroup}>
@@ -141,67 +138,72 @@ function PerfilAlumno() {
                   </div>
                 </div>
                 <div className={styles.buttonContainer}>
-                  {isEditing ? (
-                    <>
-                      <button type="submit" className={styles.modificarButton}>Guardar Cambios</button>
-                      <button type="button" onClick={handleCancelClick} className={styles.cancelarButton}>Cancelar</button>
-                    </>
-                  ) : (
-                    <button type="button" onClick={handleEditClick} className={styles.modificarButton}>Modificar</button>
+                  <button type="button" onClick={handleEditClick} className={styles.modificarButton}>Modificar</button>
+                  {isEditing && (
+                    <label className={styles.cambiarFotoButton}>
+                      Cambiar foto
+                      <input
+                        className={styles.modificarButton4}
+                        type="file"
+                        id="fotoPerfil"
+                        name="fotoPerfil"
+                        onChange={handleImageChange}
+                      />
+                    </label>
                   )}
                   <button type="button" className={styles.cambiarContrasenaButton}>Cambiar contraseña</button>
                 </div>
               </form>
-            )}
-            {activeTab === 'trabajos' && (
-              <div className={trabajosStyles.trabajosContainer}>
-                {trabajosGuardados.map(trabajo => (
-                  <div key={trabajo.id} className={trabajosStyles.trabajoItem}>
-                    <img src={trabajo.image} alt="Trabajo" className={trabajosStyles.trabajoImage} />
-                    <div className={trabajosStyles.trabajoInfo}>
-                      <h3>{trabajo.title}</h3>
-                      <p>{trabajo.description}</p>
-                      <div className={trabajosStyles.trabajoRating}>
-                        {[1, 2, 3, 4, 5].map(value => (
-                          value <= trabajo.rating ? (
-                            <AiFillStar
-                              key={value}
-                              className={trabajosStyles.star}
-                              onClick={() => handleStarClick(value)}
-                            />
-                          ) : (
-                            <AiOutlineStar
-                              key={value}
-                              className={trabajosStyles.star}
-                              onClick={() => handleStarClick(value)}
-                            />
-                          )
-                        ))}
-                      </div>
-                      <button className={trabajosStyles.removeButton}>Eliminar del perfil</button>
-                    </div>
-                  </div>
-                ))}
+              <div className={styles.imageSection}>
+                <img
+                  src={updatedData.fotoPerfil ? URL.createObjectURL(updatedData.fotoPerfil) : ProfilePicture}
+                  alt="Foto de perfil"
+                />
+                {isEditing && (
+                  <label className={styles.cambiarFotoButton}>
+                    Cambiar foto
+                    <input
+                      type="file"
+                      id="fotoPerfil"
+                      name="fotoPerfil"
+                      onChange={handleImageChange}
+                    />
+                  </label>
+                )}
               </div>
-            )}
-          </div>
-          <div className={styles.imageSection}>
-            <img
-              src={updatedData.fotoPerfil ? URL.createObjectURL(updatedData.fotoPerfil) : ProfilePicture}
-              alt="Foto de perfil"
-            />
-            <div className={styles.modificarButton3}>
-              <label htmlFor="fotoPerfil" className={styles.imageSectionLabel}>Cambiar foto</label>
-              <input
-                className={styles.modificarButton4}
-                type="file"
-                id="fotoPerfil"
-                name="fotoPerfil"
-                accept="image/png, image/jpeg"
-                onChange={handleImageChange}
-              />
             </div>
-          </div>
+          )}
+          {activeTab === 'trabajos' && (
+            trabajosGuardados.map(trabajo => (
+              <div key={trabajo.id} className={trabajosStyles.trabajoItem}>
+                <img src={trabajo.image} alt="Trabajo" className={trabajosStyles.trabajoImage} />
+                <div className={trabajosStyles.trabajoInfo}>
+                  <h3 className={trabajosStyles.trabajoTitle}>{trabajo.title}</h3>
+                  <p className={trabajosStyles.trabajoDescription}>{trabajo.description}</p>
+                  <div className={trabajosStyles.trabajoActions}>
+                    <div className={trabajosStyles.trabajoRating}>
+                      {[1, 2, 3, 4, 5].map(value => (
+                        value <= trabajo.rating ? (
+                          <AiFillStar
+                            key={value}
+                            className={trabajosStyles.star}
+                            onClick={() => handleStarClick(value)}
+                          />
+                        ) : (
+                          <AiOutlineStar
+                            key={value}
+                            className={trabajosStyles.star}
+                            onClick={() => handleStarClick(value)}
+                          />
+                        )
+                      ))}
+                    </div>
+                    <button className={trabajosStyles.removeButton}>Eliminar del perfil</button>
+                  </div>
+                </div>
+              </div>
+            ))
+          )}
         </div>
       </div>
     </div>

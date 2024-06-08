@@ -1,72 +1,51 @@
-.trabajosContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 20px;
-  }
-  
-  .trabajoItem {
-    display: flex;
-    align-items: center;
-    background-color: #f9f9f9;
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .trabajoImage {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-right: 20px;
-  }
-  
-  .trabajoInfo {
-    flex-grow: 1;
-  }
-  
-  .trabajoTitle {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  
-  .trabajoDescription {
-    font-size: 14px;
-    color: #666;
-  }
-  
-  .trabajoRating {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-left: 20px;
-  }
-  
-  .star {
-    font-size: 24px;
-    color: gold;
-  }
-  
-  .removeButton {
-    background-color: #ff4d4d;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-  }
-  
-  .removeButton:hover {
-    background-color: #ff1a1a;
-  }
-  
-  .emptyMessage {
-    font-size: 16px;
-    color: #999;
-    text-align: center;
-    margin-top: 20px;
-  }
-  
+.trabajoItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.trabajoImage {
+  width: 100px;
+  height: 100px;
+  margin-right: 20px;
+}
+
+.trabajoInfo {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.trabajoTitle {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.trabajoDescription {
+  margin-bottom: 10px;
+}
+
+.trabajoActions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.trabajoRating {
+  display: flex;
+  align-items: center;
+}
+
+.removeButton {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.star {
+  color: gold;
+  cursor: pointer;
+}
