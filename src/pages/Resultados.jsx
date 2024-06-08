@@ -3,16 +3,13 @@ import Header from '../components/Header';
 import SearchBar from '../components/SearchBar';
 import FilterSection from '../components/FilterSection';
 import ResultsList from '../components/ResultsList';
-import styles from '../styles/ResultadosSearchBar.module.css'; // Importar el CSS module específico
-import filterStyles from '../styles/FilterSectionResultados.module.css'; // Importar el CSS específico para FilterSection en Resultados
-import '../styles/Resultados.module.css'; // Importar el CSS específico para resultados (asegúrate de que el archivo exista)
+import searchBarStyles from '../styles/ResultadosSearchBar.module.css';
+import filterStyles from '../styles/FilterSectionResultados.module.css';
+import '../styles/Resultados.module.css';
 
 function Resultados() {
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedFilters, setSelectedFilters] = useState({
-    area: [],
-    curso: [],
-  });
+  const [selectedFilters, setSelectedFilters] = useState({ area: [], curso: [] });
   const [investigaciones, setInvestigaciones] = useState([]);
 
   useEffect(() => {
@@ -46,16 +43,12 @@ function Resultados() {
     return titleMatch && areaMatch && cursoMatch;
   });
 
-  const filters = {
-    area: {},
-    curso: {},
-  };
+  const filters = { area: {}, curso: {} };
   filteredInvestigaciones.forEach(inv => {
     if (inv.area && !filters.area[inv.area]) {
       filters.area[inv.area] = 0;
     }
     filters.area[inv.area] = (filters.area[inv.area] || 0) + 1;
-
     if (inv.curso && !filters.curso[inv.curso]) {
       filters.curso[inv.curso] = 0;
     }
@@ -65,27 +58,28 @@ function Resultados() {
   return (
     <div>
       <Header />
-
-      <div className={styles.resultadosContainer}> {/* Cambiamos el orden: primero ResultsList y luego filtros */}
-        <ResultsList investigaciones={filteredInvestigaciones} />
-        <div className={styles.content}>
-          <SearchBar searchTerm={searchTerm} onSearch={setSearchTerm} className={styles.searchBar} />
-          <div className={styles.filters}>
-            <h2>Filtros</h2>
-            <FilterSection 
-              title="Área"
-              filters={Object.keys(filters.area)}
-              selectedFilters={selectedFilters.area}
-              handleFilterChange={(value) => handleFilterChange('area', value)}
-              className={filterStyles.filterSection}
-            />
-            <FilterSection
-              title="Curso"
-              filters={Object.keys(filters.curso)}
-              selectedFilters={selectedFilters.curso}
-              handleFilterChange={(value) => handleFilterChange('curso', value)}
-              className={filterStyles.filterSection}
-            />
+      <div className="resultadosContainer">
+        <div className="content">
+          <SearchBar searchTerm={searchTerm} onSearch={setSearchTerm} className={searchBarStyles.searchBar} />
+          <ResultsList investigaciones={filteredInvestigaciones} />
+          <div className="resultsAndFilters">
+            <div className="filters">
+              <h2>Filtros</h2>
+              <FilterSection
+                title="Área"
+                filters={Object.keys(filters.area)}
+                selectedFilters={selectedFilters.area}
+                handleFilterChange={(value) => handleFilterChange('area', value)}
+                className={filterStyles.filterSection}
+              />
+              <FilterSection
+                title="Curso"
+                filters={Object.keys(filters.curso)}
+                selectedFilters={selectedFilters.curso}
+                handleFilterChange={(value) => handleFilterChange('curso', value)}
+                className={filterStyles.filterSection}
+              />
+            </div>
           </div>
         </div>
       </div>

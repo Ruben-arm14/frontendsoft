@@ -1,32 +1,26 @@
-/* Resultados.module.css */
-
 .resultadosContainer {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   align-items: center;
-  width: 80%;
-  max-width: 1200px; 
-  margin: 0 auto; 
-  gap: 20px; 
-  padding: 20px;
-}
-
-
-.content {
-  display: flex; /* Usamos Flexbox para la distribución */
-  gap: 20px; /* Espacio entre la barra y los filtros */
+  margin: 0 auto;
   width: 100%;
 }
 
-.resultsList {
-  flex-grow: 1; /* Los resultados ocupan el espacio restante */
-  overflow-y: auto; /* Permite el desplazamiento vertical si es necesario */
+.resultsAndFilters {
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  width: 100%;
 }
 
-.resultsList > div {
-  background-color: #fff;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-bottom: 10px;
+.results-list {
+  width: 100%;
+  max-height: 400px; /* Set a max height for the results list */
+  overflow-y: auto; /* Enable vertical scrolling */
+  margin-bottom: 20px; /* Add some space below the results list */
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }

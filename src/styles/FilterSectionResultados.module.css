@@ -1,41 +1,40 @@
 .filterSection {
-    background-color: transparent;
-    box-shadow: none;
-    margin-bottom: 100px; /* Ajusta según sea necesario */
+    background-color: #f8f8f8;
+    padding: 20px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    width: 90%;
   }
   
   .filter {
-    padding: 8px 12px;
+    padding: 10px 15px;
     border-radius: 5px;
     cursor: pointer;
-    background-color: #f0f0f0;
+    background-color: #e0e0e0;
     transition: background-color 0.3s ease;
-    width: 100%; 
-    text-align: left; 
-    border: none;
+    margin-bottom: 10px; /* Add space between filters */
+    text-align: left;
+    width: 100%;
   }
   
   .filter:hover {
-    background-color: #e0e0e0; 
+    background-color: #d0d0d0;
   }
   
   .filter.active {
-    background-color: #F26522; 
+    background-color: #F26522;
     color: white;
   }
-  .filters {
-    width: 300px; /* Ancho fijo para los filtros */
-    background-color: #F8F8F8;
-    border-radius: 8px;
-  }
+  
   .filterSection h3 {
-    margin-top: 0;
-    font-size: 18px;
-    margin-bottom: 10px;
+    font-size: 20px;
+    margin-bottom: 15px;
     background-color: #F26522;
     color: white;
     padding: 10px;
     border-radius: 8px 8px 0 0;
-    width: 10%;
+    width: 95%;
+    text-align: left;
   }
   
