@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import Header from './Header';
 import FormInput from './common/FormInput';
-import TrabajosGuardados from './TrabajosGuardados';  // Asegúrate de importar el componente correctamente
 import ProfilePicture from '../images/perfil.png';
 import styles from '../styles/PerfilAlumno.module.css';
+import trabajosStyles from '../styles/TrabajosGuardados.module.css';
 
 function PerfilAlumno() {
   const [userData, setUserData] = useState({
@@ -17,7 +18,24 @@ function PerfilAlumno() {
   const [isEditing, setIsEditing] = useState(false);
   const [updatedData, setUpdatedData] = useState({ ...userData });
   const [isLoading, setIsLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState('informacion'); // Estado para la pestaña activa
+  const [activeTab, setActiveTab] = useState('informacion');
+  const [trabajosGuardados, setTrabajosGuardados] = useState([
+    // Datos simulados para los trabajos guardados
+    {
+      id: 1,
+      title: 'Investigación 1',
+      description: 'Descripción de la investigación 1',
+      image: 'https://via.placeholder.com/100',
+      rating: 4,
+    },
+    {
+      id: 2,
+      title: 'Investigación 2',
+      description: 'Descripción de la investigación 2',
+      image: 'https://via.placeholder.com/100',
+      rating: 5,
+    },
+  ]);
 
   useEffect(() => {
     const storedUserData = JSON.parse(localStorage.getItem('userData'));
@@ -41,18 +59,20 @@ function PerfilAlumno() {
   };
 
   const handleEditClick = () => {
-    setIsEditing(true);
+    // No hay acciones por el momento
   };
 
   const handleCancelClick = () => {
-    setIsEditing(false);
-    setUpdatedData(userData);
+    // No hay acciones por el momento
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Lógica para enviar los datos al backend y actualizar el estado userData
-    // ... (implementa tu lógica de envío de datos y manejo de errores)
+  };
+
+  const handleStarClick = (value) => {
+    // Aquí puedes implementar la lógica para manejar la valoración de los trabajos
+    console.log('Valoración:', value);
   };
 
   if (isLoading) {
@@ -62,45 +82,26 @@ function PerfilAlumno() {
   return (
     <div>
       <Header />
-
-      {/* Contenedor principal del perfil */}
       <div className={styles.profileContent}>
         <h2 className={styles.profileTitle}>Mi perfil</h2>
-
-        <div className={styles.perfilContainer}>
-          {/* Sección de la imagen */}
-          <div className={styles.imageSection}>
-            <img src={updatedData.fotoPerfil ? URL.createObjectURL(updatedData.fotoPerfil) : ProfilePicture} alt="Foto de perfil" />
-
-            {isEditing && (
-              <div className={styles.modificarButton3}>
-                <label htmlFor="fotoPerfil">Cambiar foto</label>
-                <input className={styles.modificarButton4} type="file" id="fotoPerfil" name="fotoPerfil" onChange={handleImageChange} />
-              </div>
-            )}
+        <div className={styles.profileHeader}>
+          <div className={styles.tabs}>
+            <button
+              className={activeTab === 'informacion' ? styles.activeTab : ''}
+              onClick={() => setActiveTab('informacion')}
+            >
+              Información de la cuenta
+            </button>
+            <button
+              className={activeTab === 'trabajos' ? styles.activeTab : ''}
+              onClick={() => setActiveTab('trabajos')}
+            >
+              Trabajos guardados
+            </button>
           </div>
-
-          {/* Contenedor del formulario y el header */}
-          <div className={styles.formContent}>
-            {/* Pestañas */}
-            <div className={styles.profileHeader}>
-              <div className={styles.tabs}>
-                <button
-                  className={activeTab === 'informacion' ? styles.activeTab : ''}
-                  onClick={() => setActiveTab('informacion')}
-                >
-                  Información de la cuenta
-                </button>
-                <button
-                  className={activeTab === 'trabajos' ? styles.activeTab : ''}
-                  onClick={() => setActiveTab('trabajos')}
-                >
-                  Trabajos guardados
-                </button>
-              </div>
-            </div>
-
-            {/* Contenido basado en la pestaña activa */}
+        </div>
+        <div className={styles.perfilContainer}>
+          <div className={styles.formContent} style={{ margin: 'auto', width: '60%' }}>
             {activeTab === 'informacion' && (
               <form onSubmit={handleSubmit}>
                 <div className={styles.inputRow}>
@@ -139,8 +140,6 @@ function PerfilAlumno() {
                     />
                   </div>
                 </div>
-
-                {/* Botones */}
                 <div className={styles.buttonContainer}>
                   {isEditing ? (
                     <>
@@ -148,15 +147,60 @@ function PerfilAlumno() {
                       <button type="button" onClick={handleCancelClick} className={styles.cancelarButton}>Cancelar</button>
                     </>
                   ) : (
-                    <button type="button" onClick={handleEditClick} className={styles.editarButton}>Editar Perfil</button>
+                    <button type="button" onClick={handleEditClick} className={styles.modificarButton}>Modificar</button>
                   )}
                   <button type="button" className={styles.cambiarContrasenaButton}>Cambiar contraseña</button>
                 </div>
               </form>
             )}
             {activeTab === 'trabajos' && (
-              <TrabajosGuardados investigaciones={[]} role="usuario" />
+              <div className={trabajosStyles.trabajosContainer}>
+                {trabajosGuardados.map(trabajo => (
+                  <div key={trabajo.id} className={trabajosStyles.trabajoItem}>
+                    <img src={trabajo.image} alt="Trabajo" className={trabajosStyles.trabajoImage} />
+                    <div className={trabajosStyles.trabajoInfo}>
+                      <h3>{trabajo.title}</h3>
+                      <p>{trabajo.description}</p>
+                      <div className={trabajosStyles.trabajoRating}>
+                        {[1, 2, 3, 4, 5].map(value => (
+                          value <= trabajo.rating ? (
+                            <AiFillStar
+                              key={value}
+                              className={trabajosStyles.star}
+                              onClick={() => handleStarClick(value)}
+                            />
+                          ) : (
+                            <AiOutlineStar
+                              key={value}
+                              className={trabajosStyles.star}
+                              onClick={() => handleStarClick(value)}
+                            />
+                          )
+                        ))}
+                      </div>
+                      <button className={trabajosStyles.removeButton}>Eliminar del perfil</button>
+                    </div>
+                  </div>
+                ))}
+              </div>
             )}
+          </div>
+          <div className={styles.imageSection}>
+            <img
+              src={updatedData.fotoPerfil ? URL.createObjectURL(updatedData.fotoPerfil) : ProfilePicture}
+              alt="Foto de perfil"
+            />
+            <div className={styles.modificarButton3}>
+              <label htmlFor="fotoPerfil" className={styles.imageSectionLabel}>Cambiar foto</label>
+              <input
+                className={styles.modificarButton4}
+                type="file"
+                id="fotoPerfil"
+                name="fotoPerfil"
+                accept="image/png, image/jpeg"
+                onChange={handleImageChange}
+              />
+            </div>
           </div>
         </div>
       </div>
