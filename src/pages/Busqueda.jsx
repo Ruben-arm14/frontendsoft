@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import SearchBar from '../components/SearchBar';
 import FilterSection from '../components/FilterSection';
-import '../styles/Busqueda.css';
+import '../styles/busqueda.css';
 
 function Busqueda({ investigaciones, searchTerm, setSearchTerm, selectedFilters, handleFilterChange }) {
   const [filters, setFilters] = useState({

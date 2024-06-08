@@ -41,7 +41,13 @@ function App() {
           } />
           <Route path="/perfil" element={<Perfil />} />
           <Route path="/resultados" element={
-            <Resultados />} />
+            <Resultados 
+            investigaciones={investigaciones.investigaciones} 
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+            selectedFilters={selectedFilters}
+            handleFilterChange={handleFilterChange}
+            />} />
         </Routes>
       </div>
     </Router>

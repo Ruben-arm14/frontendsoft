@@ -67,6 +67,15 @@
   align-items: center;
 }
 
+.searchresultado-button {
+  background-color: #F26522; /* Fondo naranja para el botón */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
 .search-bar input[type="text"] {
   flex-grow: 1; /* El input ocupa el espacio restante */
   padding: 10px;
@@ -90,19 +99,6 @@
 }
 
 /* Estilos para la lista de resultados */
-.results-list {
-  width: calc(100% - 320px); /* Los resultados ocupan el espacio restante */
-  order: 1; /* Coloca los resultados en la primera columna */
-  overflow-y: auto;
-}
-
-.results-list > div {
-  background-color: #fff;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-bottom: 10px;
-}
 .filter:last-child {
   border-bottom: none; /* Elimina el borde inferior del último filtro */
 }
@@ -112,4 +108,33 @@
   background-color: #F26522;
   color: white;
 }
- 
+
+
+.barraresultado {
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 25px;
+  margin-top: 100px;
+  margin-left: 100px;
+  width: 60%;
+  display: flex;
+  align-items: center;
+}
+.barraresultado input[type="text"] {
+  flex-grow: 1; /* El input ocupa el espacio restante */
+  padding: 10px;
+  border: none; /* Eliminamos el borde del input */
+  outline: none; /* Eliminamos el r al hacer focus */
+}
+
+.barraresultado.search-icon {
+  margin-right: 10px;
+  color: #999; /* Color gris claro para el ícono */
+}
+.results-list{
+  padding-top: 50px;
+  padding-left: 50px;
+  width: 40%;
+}

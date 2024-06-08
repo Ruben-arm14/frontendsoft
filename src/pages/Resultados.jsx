@@ -1,9 +1,10 @@
+// Resultados.jsx
 import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
-import SearchBar from '../components/SearchBar';
+import SearchBarResultado from '../components/SearchBarResultado';
 import FilterSection from '../components/FilterSection';
 import ResultsList from '../components/ResultsList';
-import styles from '../styles/Busqueda.module.css';
+import styles from '../styles/Resultados.module.css';
 
 function Resultados() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -15,15 +16,15 @@ function Resultados() {
 
   useEffect(() => {
     // Lógica para cargar datos de investigaciones (reemplaza con tu lógica real)
-    fetch('https://jsonplaceholder.typicode.com/posts?_limit=10') 
+    fetch('https://jsonplaceholder.typicode.com/posts?_limit=10')
       .then(response => response.json())
       .then(data => {
         // Adapta los datos de la API al formato de tu aplicación
         const investigacionesAdaptadas = data.map(item => ({
           id: item.id,
           title: item.title,
-          area: 'Área ' + (item.id % 3 + 1), // Ejemplo de asignación de área
-          curso: 'Curso ' + (item.id % 2 + 1) // Ejemplo de asignación de curso
+          area: 'Área ' + (item.id % 3 + 1),
+          curso: 'Curso ' + (item.id % 2 + 1)
         }));
         setInvestigaciones(investigacionesAdaptadas);
       })
@@ -67,10 +68,13 @@ function Resultados() {
   return (
     <div>
       <Header />
-      <SearchBar searchTerm={searchTerm} onSearch={setSearchTerm} />
+      <div className={styles.busquedaContainer}>
+      <SearchBarResultado searchTerm={searchTerm} onSearch={setSearchTerm} /> {/* Colocamos SearchBar junto a los filtros */}
+        <div className={styles.content}>
+        <ResultsList investigaciones={filteredInvestigaciones} />  {/* Contenedor para filtros y barra de búsqueda */}
 
-      <div className={styles.content}>
-        <div className={styles.filters}>
+          <div className={styles.filters}> 
+          <h2>Filtros</h2>
           <FilterSection 
             title="Área"
             filters={Object.keys(filters.area)}
@@ -83,11 +87,12 @@ function Resultados() {
             selectedFilters={selectedFilters.curso}
             handleFilterChange={(value) => handleFilterChange('curso', value)}
           />
+           </div>
         </div>
-        <ResultsList investigaciones={filteredInvestigaciones} /> 
       </div>
     </div>
   );
 }
+
 
 export default Resultados;
