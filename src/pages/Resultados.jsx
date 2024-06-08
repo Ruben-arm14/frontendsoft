@@ -65,13 +65,14 @@ function Resultados() {
   return (
     <div>
       <Header />
-      <div className={styles.resultadosContainer}>
+
+      <div className={styles.resultadosContainer}> {/* Cambiamos el orden: primero ResultsList y luego filtros */}
+        <ResultsList investigaciones={filteredInvestigaciones} />
         <div className={styles.content}>
-          <SearchBar searchTerm={searchTerm} onSearch={setSearchTerm} className={styles.searchBar} /> {/* Aplicar el estilo específico */}
-          <ResultsList investigaciones={filteredInvestigaciones} />
+          <SearchBar searchTerm={searchTerm} onSearch={setSearchTerm} className={styles.searchBar} />
           <div className={styles.filters}>
             <h2>Filtros</h2>
-            <FilterSection
+            <FilterSection 
               title="Área"
               filters={Object.keys(filters.area)}
               selectedFilters={selectedFilters.area}

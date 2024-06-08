@@ -23,7 +23,11 @@
     background-color: #F26522; 
     color: white;
   }
-  
+  .filters {
+    width: 300px; /* Ancho fijo para los filtros */
+    background-color: #F8F8F8;
+    border-radius: 8px;
+  }
   .filterSection h3 {
     margin-top: 0;
     font-size: 18px;

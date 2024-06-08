@@ -1,9 +1,32 @@
-/* Busqueda.module.css */
+/* Resultados.module.css */
+
 .resultadosContainer {
-  /* Estilos específicos para la página Resultados */
-  display: flex; /* Apilar elementos verticalmente */
-  flex-direction: column; /* Alinear elementos verticalmente */
-  align-items: center; /* Centrar horizontalmente */
-  margin: 0 auto; /* Centrar el contenedor */
-  width: 100%; /* Ancho completo */
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  width: 80%;
+  max-width: 1200px; 
+  margin: 0 auto; 
+  gap: 20px; 
+  padding: 20px;
+}
+
+
+.content {
+  display: flex; /* Usamos Flexbox para la distribución */
+  gap: 20px; /* Espacio entre la barra y los filtros */
+  width: 100%;
+}
+
+.resultsList {
+  flex-grow: 1; /* Los resultados ocupan el espacio restante */
+  overflow-y: auto; /* Permite el desplazamiento vertical si es necesario */
+}
+
+.resultsList > div {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
 }
