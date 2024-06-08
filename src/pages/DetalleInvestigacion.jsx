@@ -25,10 +25,10 @@ function DetalleInvestigacion() {
     return (
         <div>
             <Header />
-            <div className={styles.detalleContainer}>
-                <button className={styles.regresarButton}>← Regresar</button>
-                {investigacion && (
-                    <>
+            {investigacion && (
+                <div className={styles.container}>
+                    <div className={styles.leftColumn}>
+                        <button className={styles.regresarButton}>← Regresar</button>
                         <h2 className={styles.title}>{investigacion.title}</h2>
                         <div className={styles.header}>
                             <FaFileAlt className={styles.documentIcon} />
@@ -36,6 +36,33 @@ function DetalleInvestigacion() {
                                 <p className={styles.description}>{investigacion.abstract}</p>
                             </div>
                         </div>
+                        <div className={styles.commentSection}>
+                            <h3>Comenta acerca de este trabajo</h3>
+                            <textarea className={styles.commentTextArea} />
+                            <button className={styles.submitButton}>Enviar</button>
+                        </div>
+                        <div className={styles.commentsContainer}>
+                            <h3>Comentarios</h3>
+                            <div className={styles.comment}>
+                                <div className={styles.commentHeader}>
+                                    <img
+                                        className={styles.commentImage}
+                                        src={logoicon}
+                                        alt="Perfil"
+                                    />
+                                    <div className={styles.commentUserInfo}>
+                                        <p className={styles.commentUser}>Usuario</p>
+                                        <p className={styles.commentDate}>Fecha</p>
+                                    </div>
+                                </div>
+                                <div className={styles.commentContent}>
+                                    <p>Contenido del comentario</p>
+                                </div>
+                            </div>
+                            {/* Aquí van los demás comentarios */}
+                        </div>
+                    </div>
+                    <div className={styles.rightColumn}>
                         <div className={styles.infoContainer}>
                             <div className={styles.infoRow}>
                                 <div className={styles.infoColumn}>
@@ -96,30 +123,9 @@ function DetalleInvestigacion() {
                                 )}
                             </div>
                         </div>
-                        <div className={styles.commentSection}>
-                            <h3>Comenta acerca de este trabajo</h3>
-                            <textarea className={styles.commentTextArea} />
-                            <button className={styles.submitButton}>Enviar</button>
-                        </div>
-                        <div className={styles.commentsContainer}>
-                            <h3>Comentarios</h3>
-                            <div className={styles.comment}>
-                                <img
-                                    className={styles.commentImage}
-                                    src={logoicon}
-                                    alt="Perfil"
-                                />
-                                <div className={styles.commentContent}>
-                                    <p className={styles.commentUser}>Usuario</p>
-                                    <p className={styles.commentDate}>Fecha del comentario</p>
-                                    <p>Contenido del comentario</p>
-                                </div>
-                            </div>
-                            {/* Aquí van los demás comentarios */}
-                        </div>
-                    </>
-                )}
-            </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
