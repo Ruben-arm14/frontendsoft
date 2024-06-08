@@ -1,10 +1,11 @@
-// Resultados.jsx
 import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
-import SearchBarResultado from '../components/SearchBarResultado';
+import SearchBar from '../components/SearchBar';
 import FilterSection from '../components/FilterSection';
 import ResultsList from '../components/ResultsList';
-import styles from '../styles/Resultados.module.css';
+import styles from '../styles/ResultadosSearchBar.module.css'; // Importar el CSS module específico
+import filterStyles from '../styles/FilterSectionResultados.module.css'; // Importar el CSS específico para FilterSection en Resultados
+import '../styles/Resultados.module.css'; // Importar el CSS específico para resultados (asegúrate de que el archivo exista)
 
 function Resultados() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -15,11 +16,9 @@ function Resultados() {
   const [investigaciones, setInvestigaciones] = useState([]);
 
   useEffect(() => {
-    // Lógica para cargar datos de investigaciones (reemplaza con tu lógica real)
     fetch('https://jsonplaceholder.typicode.com/posts?_limit=10')
       .then(response => response.json())
       .then(data => {
-        // Adapta los datos de la API al formato de tu aplicación
         const investigacionesAdaptadas = data.map(item => ({
           id: item.id,
           title: item.title,
@@ -40,7 +39,6 @@ function Resultados() {
     }));
   };
 
-  // Lógica de filtrado
   const filteredInvestigaciones = investigaciones.filter(inv => {
     const titleMatch = inv.title.toLowerCase().includes(searchTerm.toLowerCase());
     const areaMatch = selectedFilters.area.length === 0 || selectedFilters.area.includes(inv.area);
@@ -48,7 +46,6 @@ function Resultados() {
     return titleMatch && areaMatch && cursoMatch;
   });
 
-  // Calcular filtros disponibles y sus conteos
   const filters = {
     area: {},
     curso: {},
@@ -68,31 +65,31 @@ function Resultados() {
   return (
     <div>
       <Header />
-      <div className={styles.busquedaContainer}>
-      <SearchBarResultado searchTerm={searchTerm} onSearch={setSearchTerm} /> {/* Colocamos SearchBar junto a los filtros */}
+      <div className={styles.resultadosContainer}>
         <div className={styles.content}>
-        <ResultsList investigaciones={filteredInvestigaciones} />  {/* Contenedor para filtros y barra de búsqueda */}
-
-          <div className={styles.filters}> 
-          <h2>Filtros</h2>
-          <FilterSection 
-            title="Área"
-            filters={Object.keys(filters.area)}
-            selectedFilters={selectedFilters.area}
-            handleFilterChange={(value) => handleFilterChange('area', value)}
-          />
-          <FilterSection
-            title="Curso"
-            filters={Object.keys(filters.curso)}
-            selectedFilters={selectedFilters.curso}
-            handleFilterChange={(value) => handleFilterChange('curso', value)}
-          />
-           </div>
+          <SearchBar searchTerm={searchTerm} onSearch={setSearchTerm} className={styles.searchBar} /> {/* Aplicar el estilo específico */}
+          <ResultsList investigaciones={filteredInvestigaciones} />
+          <div className={styles.filters}>
+            <h2>Filtros</h2>
+            <FilterSection
+              title="Área"
+              filters={Object.keys(filters.area)}
+              selectedFilters={selectedFilters.area}
+              handleFilterChange={(value) => handleFilterChange('area', value)}
+              className={filterStyles.filterSection}
+            />
+            <FilterSection
+              title="Curso"
+              filters={Object.keys(filters.curso)}
+              selectedFilters={selectedFilters.curso}
+              handleFilterChange={(value) => handleFilterChange('curso', value)}
+              className={filterStyles.filterSection}
+            />
+          </div>
         </div>
       </div>
     </div>
   );
 }
-
 
 export default Resultados;

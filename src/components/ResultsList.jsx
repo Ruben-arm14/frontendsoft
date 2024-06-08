@@ -1,9 +1,10 @@
 import React from 'react';
 import ResultItem from './ResultItem';
+import styles from '../styles/ResultsList.module.css'; // Importar el CSS module específico
 
 function ResultsList({ investigaciones }) {
   return (
-    <div className="results-list">
+    <div className={styles.resultsList}>
       <h2>Resultados ({investigaciones.length})</h2>
       {investigaciones.length > 0 ? (
         investigaciones.map(inv => (

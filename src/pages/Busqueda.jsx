@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import SearchBar from '../components/SearchBar';
 import FilterSection from '../components/FilterSection';
+import styles from '../styles/BusquedaSearchBar.module.css'; // Importar el CSS module específico
+import filterStyles from '../styles/FilterSectionBusqueda.module.css'; // Importar el CSS específico para FilterSection en Busqueda
 import '../styles/busqueda.css';
 
 function Busqueda({ investigaciones, searchTerm, setSearchTerm, selectedFilters, handleFilterChange }) {
@@ -36,22 +38,23 @@ function Busqueda({ investigaciones, searchTerm, setSearchTerm, selectedFilters,
       <Header />
 
       <div className="content">
-        {/* Se movieron los filtros a la derecha de la barra de búsqueda */}
-        <SearchBar searchTerm={searchTerm} onSearch={setSearchTerm} />
+        <SearchBar searchTerm={searchTerm} onSearch={setSearchTerm} className={styles.searchBar} /> {/* Aplicar el estilo específico */}
         <div className="filters">
           <FilterSection
             title="Área"
             filters={Object.keys(filters.area)}
             selectedFilters={selectedFilters.area}
             handleFilterChange={(value) => handleFilterChange('area', value)}
+            className={filterStyles.filterSection}
           />
           <FilterSection
             title="Curso"
             filters={Object.keys(filters.curso)}
             selectedFilters={selectedFilters.curso}
             handleFilterChange={(value) => handleFilterChange('curso', value)}
+            className={filterStyles.filterSection}
           />
-        </div> 
+        </div>
       </div>
     </div>
   );

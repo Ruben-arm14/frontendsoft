@@ -1,0 +1,37 @@
+.filterSection {
+    background-color: transparent;
+    box-shadow: none;
+    margin-bottom: 100px; /* Ajusta según sea necesario */
+  }
+  
+  .filter {
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    transition: background-color 0.3s ease;
+    width: 100%; 
+    text-align: left; 
+    border: none;
+  }
+  
+  .filter:hover {
+    background-color: #e0e0e0; 
+  }
+  
+  .filter.active {
+    background-color: #F26522; 
+    color: white;
+  }
+  
+  .filterSection h3 {
+    margin-top: 0;
+    font-size: 18px;
+    margin-bottom: 10px;
+    background-color: #F26522;
+    color: white;
+    padding: 10px;
+    border-radius: 8px 8px 0 0;
+    width: 10%;
+  }
+  

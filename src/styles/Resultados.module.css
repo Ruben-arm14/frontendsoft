@@ -1,24 +1,4 @@
 /* Busqueda.module.css */
-
-.content {
-  display: flex;
-  justify-content: space-between; /* Distribuye elementos con espacio entre ellos */
-  align-items: flex-start; /* Alinea los elementos al inicio (arriba) */
-  width: 100%;
-}
-.filters {
-  width: 450px; /* Ancho fijo para los filtros */
-  background-color: #F8F8F8; /* Fondo gris claro para el contenedor de filtros */
-  padding: 40px;
-  border-radius: 8px;
-  padding-top:50px;
-  min-height: 1000px; 
-}
-.filter-section {
-  background-color: transparent;
-  box-shadow: none;
-  margin-bottom: 100px; /* Espacio entre secciones de filtros */
-}
 .resultadosContainer {
   /* Estilos específicos para la página Resultados */
   display: flex; /* Apilar elementos verticalmente */
@@ -27,35 +7,3 @@
   margin: 0 auto; /* Centrar el contenedor */
   width: 100%; /* Ancho completo */
 }
-.filter-section h3 {
-  margin-top: 0;
-  font-size: 18px;
-  margin-bottom: 10px;
-  background-color: #F26522; 
-  color: white;
-  padding: 10px;
-  border-radius: 8px 8px 0 0; 
-  width: 100%; 
-}
-
-.filter {
-  padding: 8px 12px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-bottom: 5px;
-  background-color: #f0f0f0;
-  transition: background-color 0.3s ease;
-  width: 100%; 
-  text-align: left; 
-  border: none; 
-}
-
-.filter:hover {
-  background-color: #e0e0e0; 
-}
-
-.filter.active {
-  background-color: #F26522; 
-  color: white;
-}
-

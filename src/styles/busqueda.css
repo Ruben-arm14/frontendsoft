@@ -53,40 +53,6 @@
   border-radius: 8px 8px 0 0;
   width: 100%;
 }
-.search-bar {
-  background-color: #fff;
-  color: #333;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 25px;
-  margin-top: 350px;
-  margin-left: 50px;
-  margin-right: 50px;
-  width: 70%;
-  display: flex;
-  align-items: center;
-}
-
-.searchresultado-button {
-  background-color: #F26522; /* Fondo naranja para el botón */
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-}
-.search-bar input[type="text"] {
-  flex-grow: 1; /* El input ocupa el espacio restante */
-  padding: 10px;
-  border: none; /* Eliminamos el borde del input */
-  outline: none; /* Eliminamos el outline al hacer focus */
-}
-
-.search-bar .search-icon {
-  margin-right: 10px;
-  color: #999; /* Color gris claro para el ícono */
-}
 
 .search-bar button {
   background-color: #F26522; /* Fondo naranja para el botón */
@@ -109,32 +75,3 @@
   color: white;
 }
 
-
-.barraresultado {
-  background-color: #fff;
-  color: #333;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 25px;
-  margin-top: 100px;
-  margin-left: 100px;
-  width: 60%;
-  display: flex;
-  align-items: center;
-}
-.barraresultado input[type="text"] {
-  flex-grow: 1; /* El input ocupa el espacio restante */
-  padding: 10px;
-  border: none; /* Eliminamos el borde del input */
-  outline: none; /* Eliminamos el r al hacer focus */
-}
-
-.barraresultado.search-icon {
-  margin-right: 10px;
-  color: #999; /* Color gris claro para el ícono */
-}
-.results-list{
-  padding-top: 50px;
-  padding-left: 50px;
-  width: 40%;
-}
