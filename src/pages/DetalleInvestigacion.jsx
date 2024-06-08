@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { FaFileAlt } from 'react-icons/fa';
 import { AiOutlineStar, AiFillStar } from 'react-icons/ai';
 import Header from '../components/Header';
+import logoicon from '../images/perfil.png';
 import styles from '../styles/DetalleInvestigacion.module.css';
 import data from '../data/db.json'; // Importar los datos desde el archivo db.json
 
@@ -105,7 +106,7 @@ function DetalleInvestigacion() {
                             <div className={styles.comment}>
                                 <img
                                     className={styles.commentImage}
-                                    src="/perfil.png"
+                                    src={logoicon}
                                     alt="Perfil"
                                 />
                                 <div className={styles.commentContent}>
