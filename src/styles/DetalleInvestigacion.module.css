@@ -1,0 +1,140 @@
+.detalleContainer {
+    width: 80%;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.regresarButton {
+    background-color: transparent;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.title {
+    margin: 0;
+    padding: 0;
+}
+
+.documentIcon {
+    font-size: 48px; /* Ajustar el tamaño del icono */
+    color: #007bff;
+}
+
+.description {
+    margin-top: 20px;
+}
+
+.infoContainer {
+    margin-top: 20px;
+}
+
+.infoRow {
+    display: flex;
+    gap: 20px;
+}
+
+.infoColumn {
+    display: flex;
+    flex-direction: column;
+}
+
+.infoItem {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.infoLabel {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.ratingSection {
+    margin-top: 20px;
+}
+
+.starRating {
+    display: flex;
+}
+
+.star {
+    font-size: 24px;
+    color: gold;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.commentSection {
+    margin-top: 20px;
+}
+
+.commentTextArea {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+    resize: none;
+}
+
+.submitButton {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.commentsContainer {
+    margin-top: 20px;
+}
+
+.comment {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.commentImage {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.commentContent {
+    width: calc(100% - 40px);
+}
+
+.commentUser {
+    font-weight: bold;
+}
+
+.commentDate {
+    color: #666;
+}
+
+.tags {
+    margin-top: 10px;
+}
+
+.tag {
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
