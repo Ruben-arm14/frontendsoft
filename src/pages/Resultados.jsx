@@ -5,7 +5,7 @@ import FilterSection from '../components/FilterSection';
 import ResultsList from '../components/ResultsList';
 import searchBarStyles from '../styles/ResultadosSearchBar.module.css';
 import filterStyles from '../styles/FilterSectionResultados.module.css';
-import '../styles/Resultados.module.css';
+import resultadosStyles from '../styles/Resultados.module.css';
 
 function Resultados() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -58,10 +58,12 @@ function Resultados() {
   return (
     <div>
       <Header />
-      <div className="resultadosContainer">
+      <div className={resultadosStyles.resultadosContainer}>
         <div className="content">
-          <SearchBar searchTerm={searchTerm} onSearch={setSearchTerm} className={searchBarStyles.searchBar} />
-          <ResultsList investigaciones={filteredInvestigaciones} />
+          <div className={resultadosStyles.searchAndResults}>
+            <SearchBar searchTerm={searchTerm} onSearch={setSearchTerm} className={searchBarStyles.searchBar} />
+            <ResultsList investigaciones={filteredInvestigaciones} className={resultadosStyles.resultsList} />
+          </div>
           <div className="resultsAndFilters">
             <div className="filters">
               <h2>Filtros</h2>

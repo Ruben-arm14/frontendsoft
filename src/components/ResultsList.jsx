@@ -1,11 +1,12 @@
+// components/ResultsList.jsx
 import React from 'react';
 import ResultItem from './ResultItem';
-import '../styles/Resultados.module.css'; // Make sure the CSS file is imported
+import resultadosStyles from '../styles/Resultados.module.css'; // Importa los estilos
 
 function ResultsList({ investigaciones }) {
   return (
-    <div className="results-list">
-      <h2>Resultados ({investigaciones.length})</h2>
+    <div className={resultadosStyles['results-list']}>
+      <h2 className={resultadosStyles['results-title']}>Resultados ({investigaciones.length})</h2> {/* Mueve "Resultados" hacia la derecha */}
       {investigaciones.length > 0 ? (
         investigaciones.map(inv => (
           <ResultItem key={inv.id} inv={inv} />

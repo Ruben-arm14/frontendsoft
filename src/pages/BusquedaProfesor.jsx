@@ -4,9 +4,9 @@ import SearchBar from '../components/SearchBar';
 import FilterSection from '../components/FilterSection';
 import searchBarStyles from '../styles/BusquedaSearchBar.module.css';
 import filterStyles from '../styles/FilterSectionBusqueda.module.css';
-import '../styles/busqueda.css';
+import '../styles/busquedaProfesor.css';
 
-function Busqueda({ investigaciones, searchTerm, setSearchTerm, selectedFilters, handleFilterChange }) {
+function BusquedaProfesor({ investigaciones, searchTerm, setSearchTerm, selectedFilters, handleFilterChange }) {
   const [filters, setFilters] = useState({ area: {}, curso: {} });
 
   useEffect(() => {
@@ -50,4 +50,4 @@ function Busqueda({ investigaciones, searchTerm, setSearchTerm, selectedFilters,
   );
 }
 
-export default Busqueda;
+export default BusquedaProfesor;

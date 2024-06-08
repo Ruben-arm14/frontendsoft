@@ -7,29 +7,27 @@ import '../index.css'; // Corregir la ruta del CSS
 function Header() {
   const location = useLocation();
 
+  // Determina la ruta de perfil según la ubicación actual
+  let perfilPath = '';
+  if (location.pathname === '/busquedaprofesor') {
+    perfilPath = '/perfilprofesor';
+  } else if (location.pathname === '/busquedaalumno') {
+    perfilPath = '/perfilalumno';
+  } else {
+    perfilPath = '/';
+  }
+
   return (
     <header className="header">
       <h1>Lumen Investiga</h1>
       {location.pathname !== '/' && ( 
-        <Link to="/Perfil" className="home-link"> <>
-        <span className="profile-text">Perfil</span>
-        <img src={profileIcon} alt="Profile icon" className="profile-icon" />
-      </></Link>
-      )}
-
-      <div className="profile-container">
-        {location.pathname === '/usuario' ? ( 
+        <Link to={perfilPath} className="home-link"> 
           <>
-            <span className="profile-text">Hola, Juan</span>
+            <span className="profile-text">Perfil</span>
             <img src={profileIcon} alt="Profile icon" className="profile-icon" />
           </>
-        ) : location.pathname === '/profesor' ? ( 
-            <>
-              <span className="profile-text">Hola, Profe</span>
-              <img src={profileIcon} alt="Profile icon" className="profile-icon" />
-            </>
-          ) : null}
-      </div>
+        </Link>
+      )}
     </header>
   );
 }

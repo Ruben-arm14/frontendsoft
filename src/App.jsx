@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './pages/Login';
-import Busqueda from './pages/Busqueda';
+import BusquedaAlumno from './pages/BusquedaAlumno';
+import BusquedaProfesor from './pages/BusquedaAlumno'; // Corregir la importación
 import Register from './pages/Register';
-import Perfil from './components/Perfil';
+import PerfilAlumno from './components/PerfilAlumno'; // Importa PerfilAlumno
+import PerfilProfesor from './components/PerfilProfesor'; // Importa PerfilProfesor
 import Resultados from './pages/Resultados';
 import './styles/App.css';
 import investigaciones from './data/db.json';
@@ -30,8 +32,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/busqueda" element={
-            <Busqueda
+          <Route path="/perfilAlumno" element={<PerfilAlumno />} />
+          <Route path="/perfilProfesor" element={<PerfilProfesor />} /> {/* Usa PerfilProfesor en la ruta */}
+          <Route path="/busquedaalumno" element={
+            <BusquedaAlumno
               investigaciones={investigaciones.investigaciones} 
               searchTerm={searchTerm}
               setSearchTerm={setSearchTerm}
@@ -39,15 +43,24 @@ function App() {
               handleFilterChange={handleFilterChange}
             />
           } />
-          <Route path="/perfil" element={<Perfil />} />
+          <Route path="/busquedaprofesor" element={
+            <BusquedaProfesor
+              investigaciones={investigaciones.investigaciones} 
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
+              selectedFilters={selectedFilters}
+              handleFilterChange={handleFilterChange}
+            />
+          } />
           <Route path="/resultados" element={
             <Resultados 
-            investigaciones={investigaciones.investigaciones} 
-            searchTerm={searchTerm}
-            setSearchTerm={setSearchTerm}
-            selectedFilters={selectedFilters}
-            handleFilterChange={handleFilterChange}
-            />} />
+              investigaciones={investigaciones.investigaciones} 
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
+              selectedFilters={selectedFilters}
+              handleFilterChange={handleFilterChange}
+            />
+          } />
         </Routes>
       </div>
     </Router>

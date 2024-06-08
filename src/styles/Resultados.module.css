@@ -4,23 +4,84 @@
   align-items: center;
   margin: 0 auto;
   width: 100%;
+  max-height: 100vh; /* Establece una altura máxima para el contenedor */
+  overflow-y: auto; /* Habilita el desplazamiento vertical */
+}
+
+.content {
+  width: 100%;
+}
+
+.searchAndResults {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.results-title {
+  text-align: right; /* Alinea la palabra "Resultados" hacia la derecha */
+  margin-right: 915px; /* Ajusta el margen derecho */
 }
 
 .resultsAndFilters {
   display: flex;
-  flex-direction: column; /* Stack elements vertically */
-  width: 100%;
-}
-
-.results-list {
-  width: 100%;
-  max-height: 400px; /* Set a max height for the results list */
-  overflow-y: auto; /* Enable vertical scrolling */
-  margin-bottom: 20px; /* Add some space below the results list */
-}
-
-.filters {
-  display: flex;
   flex-direction: column;
   width: 100%;
+}
+.image {
+  width: 100px; /* Tamaño de la imagen */
+  height: auto; /* Altura automática */
+}
+.image-container {
+  margin-right: 20px; /* Espacio entre la imagen y el contenido */
+}
+
+.content-container {
+  flex-grow: 1; /* El contenido ocupa todo el espacio disponible */
+}
+/* styles/Resultados.module.css */
+
+.result-item {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  margin-left: 50px;
+  margin-bottom: 20px;
+  display: flex; /* Usar flexbox para alinear los elementos */
+}
+
+.result
+.rating {
+  display: flex; /* Mostrar las estrellas en línea */
+  margin-bottom: 10px;
+}
+
+.star {
+  font-size: 20px;
+  color: #ccc;
+  cursor: pointer;
+  transition: color 0.3s; /* Animación de cambio de color */
+}
+
+.star.active {
+  color: #FFD700; /* Color de las estrellas seleccionadas */
+}
+.action-container {
+  display: flex; /* Usar flexbox para alinear los elementos */
+  flex-direction: column; /* Apilar los elementos verticalmente */
+  align-items: flex-end; /* Alinear los elementos a la derecha */
+}
+
+.save-button {
+  align-self: flex-end; /* Alinear el botón a la derecha */
+  background-color: #F26522;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  margin-left: 100px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px; /* Agrega margen superior al botón */
 }

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import Header from '../components/Header';
-import FormInput from '../components/common/FormInput';
-import TrabajosGuardados from '../components/TrabajosGuardados';  // Asegúrate de importar el componente correctamente
+import Header from './Header';
+import FormInput from './common/FormInput';
+import TrabajosGuardados from './TrabajosGuardados';  // Asegúrate de importar el componente correctamente
 import ProfilePicture from '../images/perfil.png';
-import styles from '../styles/Perfil.module.css';
+import styles from '../styles/PerfilAlumno.module.css';
 
-function Perfil() {
+function PerfilAlumno() {
   const [userData, setUserData] = useState({
     nombres: '',
     apellidos: '',
@@ -164,4 +164,4 @@ function Perfil() {
   );
 }
 
-export default Perfil;
+export default PerfilAlumno;
