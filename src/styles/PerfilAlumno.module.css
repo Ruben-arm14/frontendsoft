@@ -140,8 +140,8 @@
   align-items: flex-end; /* Alineamos la imagen a la derecha */
   justify-content: center; /* Centrar verticalmente */
   width: 100%;
-  margin-left: 1000px;
-  margin-top: -450px; /* Subir la imagen */
+  margin-left: 700px;
+  margin-top: -500px; /* Subir la imagen */
 }
 
 .imageSection img {

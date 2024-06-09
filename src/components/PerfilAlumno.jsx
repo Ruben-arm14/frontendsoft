@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import Header from './Header';
 import FormInput from './common/FormInput';
-import ProfilePicture from '../images/perfil.png';
+import ProfilePicture from '../images/perfil.png'; // Cambiada la imagen predeterminada
 import styles from '../styles/PerfilAlumno.module.css';
 import trabajosStyles from '../styles/TrabajosGuardados.module.css';
 
@@ -53,12 +53,12 @@ function PerfilAlumno() {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      setUpdatedData({ ...updatedData, fotoPerfil: file });
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setUpdatedData({ ...updatedData, fotoPerfil: reader.result });
+      };
+      reader.readAsDataURL(file);
     }
-  };
-
-  const handleEditClick = () => {
-    setIsEditing(!isEditing);
   };
 
   const handleSubmit = (e) => {
@@ -87,13 +87,13 @@ function PerfilAlumno() {
               className={activeTab === 'informacion' ? styles.activeTab : ''}
               onClick={() => setActiveTab('informacion')}
             >
-              Información de la cuenta
+              <span className={activeTab === 'informacion' ? styles.tabActiveText : styles.tabText}>Información de la cuenta</span>
             </button>
             <button
               className={activeTab === 'trabajos' ? styles.activeTab : ''}
               onClick={() => setActiveTab('trabajos')}
             >
-              Trabajos guardados
+              <span className={activeTab === 'trabajos' ? styles.tabActiveText : styles.tabText}>Trabajos guardados</span>
             </button>
           </div>
         </div>
@@ -107,7 +107,7 @@ function PerfilAlumno() {
                       label="Nombres"
                       type="text"
                       name="nombres"
-                      value={isEditing ? updatedData.nombres : userData.nombres}
+                      value={updatedData.nombres}
                       onChange={handleChange}
                       disabled={!isEditing}
                     />
@@ -115,7 +115,7 @@ function PerfilAlumno() {
                       label="Apellidos"
                       type="text"
                       name="apellidos"
-                      value={isEditing ? updatedData.apellidos : userData.apellidos}
+                      value={updatedData.apellidos}
                       onChange={handleChange}
                       disabled={!isEditing}
                     />
@@ -123,7 +123,7 @@ function PerfilAlumno() {
                       label="Código"
                       type="text"
                       name="codigo"
-                      value={isEditing ? updatedData.codigo : userData.codigo}
+                      value={updatedData.codigo}
                       onChange={handleChange}
                       disabled={!isEditing}
                     />
@@ -131,45 +131,32 @@ function PerfilAlumno() {
                       label="Correo"
                       type="email"
                       name="correo"
-                      value={isEditing ? updatedData.correo : userData.correo}
+                      value={updatedData.correo}
                       onChange={handleChange}
                       disabled={!isEditing}
                     />
                   </div>
                 </div>
                 <div className={styles.buttonContainer}>
-                  <button type="button" onClick={handleEditClick} className={styles.modificarButton}>Modificar</button>
-                  {isEditing && (
-                    <label className={styles.cambiarFotoButton}>
-                      Cambiar foto
-                      <input
-                        className={styles.modificarButton4}
-                        type="file"
-                        id="fotoPerfil"
-                        name="fotoPerfil"
-                        onChange={handleImageChange}
-                      />
-                    </label>
-                  )}
+                  <button type="button" className={styles.modificarButton}>Modificar</button>
                   <button type="button" className={styles.cambiarContrasenaButton}>Cambiar contraseña</button>
                 </div>
               </form>
               <div className={styles.imageSection}>
                 <img
-                  src={updatedData.fotoPerfil ? URL.createObjectURL(updatedData.fotoPerfil) : ProfilePicture}
+                  src={updatedData.fotoPerfil ? updatedData.fotoPerfil : ProfilePicture}
                   alt="Foto de perfil"
                 />
-                {isEditing && (
-                  <label className={styles.cambiarFotoButton}>
-                    Cambiar foto
-                    <input
-                      type="file"
-                      id="fotoPerfil"
-                      name="fotoPerfil"
-                      onChange={handleImageChange}
-                    />
-                  </label>
-                )}
+                <label className={styles.cambiarFotoButton} htmlFor="fotoPerfil" style={{ marginLeft: '-10px' }}> {/* Modificación aquí */}
+                  Cambiar foto
+                  <input
+                    type="file"
+                    id="fotoPerfil"
+                    name="fotoPerfil"
+                    onChange={handleImageChange}
+                    style={{ display: 'none' }}
+                  />
+                </label>
               </div>
             </div>
           )}
@@ -180,26 +167,24 @@ function PerfilAlumno() {
                 <div className={trabajosStyles.trabajoInfo}>
                   <h3 className={trabajosStyles.trabajoTitle}>{trabajo.title}</h3>
                   <p className={trabajosStyles.trabajoDescription}>{trabajo.description}</p>
-                  <div className={trabajosStyles.trabajoActions}>
-                    <div className={trabajosStyles.trabajoRating}>
-                      {[1, 2, 3, 4, 5].map(value => (
-                        value <= trabajo.rating ? (
-                          <AiFillStar
-                            key={value}
-                            className={trabajosStyles.star}
-                            onClick={() => handleStarClick(value)}
-                          />
-                        ) : (
-                          <AiOutlineStar
-                            key={value}
-                            className={trabajosStyles.star}
-                            onClick={() => handleStarClick(value)}
-                          />
-                        )
-                      ))}
-                    </div>
-                    <button className={trabajosStyles.removeButton}>Eliminar del perfil</button>
+                  <div className={trabajosStyles.trabajoRating}>
+                    {[1, 2, 3, 4, 5].map(value => (
+                      value <= trabajo.rating ? (
+                        <AiFillStar
+                          key={value}
+                          className={trabajosStyles.star}
+                          onClick={() => handleStarClick(value)}
+                        />
+                      ) : (
+                        <AiOutlineStar
+                          key={value}
+                          className={trabajosStyles.star}
+                          onClick={() => handleStarClick(value)}
+                        />
+                      )
+                    ))}
                   </div>
+                  <button className={trabajosStyles.removeButton}>Eliminar del perfil</button>
                 </div>
               </div>
             ))

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import FormInput from './common/FormInput';
-import TrabajosGuardados from './TrabajosGuardados';  // Asegúrate de importar el componente correctamente
 import ProfilePicture from '../images/perfil.png';
 import styles from '../styles/PerfilProfesor.module.css';
+import trabajosStyles from '../styles/TrabajosGuardados.module.css';
 
 function PerfilProfesor() {
   const [userData, setUserData] = useState({
@@ -17,7 +17,23 @@ function PerfilProfesor() {
   const [isEditing, setIsEditing] = useState(false);
   const [updatedData, setUpdatedData] = useState({ ...userData });
   const [isLoading, setIsLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState('informacion'); // Estado para la pestaña activa
+  const [activeTab, setActiveTab] = useState('informacion');
+  const [trabajosGuardados, setTrabajosGuardados] = useState([
+    {
+      id: 1,
+      title: 'Investigación 1',
+      description: 'Descripción de la investigación 1',
+      image: 'https://via.placeholder.com/100',
+      dateUploaded: '2024-01-01',
+    },
+    {
+      id: 2,
+      title: 'Investigación 2',
+      description: 'Descripción de la investigación 2',
+      image: 'https://via.placeholder.com/100',
+      dateUploaded: '2024-02-01',
+    },
+  ]);
 
   useEffect(() => {
     const storedUserData = JSON.parse(localStorage.getItem('userData'));
@@ -36,23 +52,23 @@ function PerfilProfesor() {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      setUpdatedData({ ...updatedData, fotoPerfil: file });
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setUpdatedData({ ...updatedData, fotoPerfil: reader.result });
+      };
+      reader.readAsDataURL(file);
     }
-  };
-
-  const handleEditClick = () => {
-    setIsEditing(true);
-  };
-
-  const handleCancelClick = () => {
-    setIsEditing(false);
-    setUpdatedData(userData);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Lógica para enviar los datos al backend y actualizar el estado userData
-    // ... (implementa tu lógica de envío de datos y manejo de errores)
+    setIsEditing(false);
+    setUserData(updatedData);
+    localStorage.setItem('userData', JSON.stringify(updatedData));
+  };
+
+  const handleUploadClick = () => {
+    console.log('Subir trabajo');
   };
 
   if (isLoading) {
@@ -62,46 +78,31 @@ function PerfilProfesor() {
   return (
     <div>
       <Header />
-
-      {/* Contenedor principal del perfil */}
       <div className={styles.profileContent}>
         <h2 className={styles.profileTitle}>Mi perfil</h2>
-
-        <div className={styles.perfilContainer}>
-          {/* Sección de la imagen */}
-          <div className={styles.imageSection}>
-            <img src={updatedData.fotoPerfil ? URL.createObjectURL(updatedData.fotoPerfil) : ProfilePicture} alt="Foto de perfil" />
-
-            {isEditing && (
-              <div className={styles.modificarButton3}>
-                <label htmlFor="fotoPerfil">Cambiar foto</label>
-                <input className={styles.modificarButton4} type="file" id="fotoPerfil" name="fotoPerfil" onChange={handleImageChange} />
-              </div>
-            )}
+        <div className={styles.profileHeader}>
+          <div className={styles.tabs}>
+            <button
+              className={activeTab === 'informacion' ? styles.activeTab : ''}
+              onClick={() => setActiveTab('informacion')}
+            >
+              <span className={activeTab === 'informacion' ? styles.tabActiveText : styles.tabText}>Información de la cuenta</span>
+            </button>
+            <button
+              className={activeTab === 'trabajos' ? styles.activeTab : ''}
+              onClick={() => setActiveTab('trabajos')}
+            >
+              <span className={activeTab === 'trabajos' ? styles.tabActiveText : styles.tabText}>Trabajos subidos</span>
+            </button>
           </div>
 
-          {/* Contenedor del formulario y el header */}
-          <div className={styles.formContent}>
-            {/* Pestañas */}
-            <div className={styles.profileHeader}>
-              <div className={styles.tabs}>
-                <button
-                  className={activeTab === 'informacion' ? styles.activeTab : ''}
-                  onClick={() => setActiveTab('informacion')}
-                >
-                  Información de la cuenta
-                </button>
-                <button
-                  className={activeTab === 'trabajos' ? styles.activeTab : ''}
-                  onClick={() => setActiveTab('trabajos')}
-                >
-                  Trabajos Subidos
-                </button>
-              </div>
-            </div>
-
-            {/* Contenido basado en la pestaña activa */}
-            {activeTab === 'informacion' && (
+        </div>
+        {activeTab === 'trabajos' && (
+            <button className={styles.subirTrabajoButton} onClick={handleUploadClick}>Subir trabajo</button>
+          )}
+        <div className={styles.perfilContainer}>
+          {activeTab === 'informacion' && (
+            <div className={styles.formContent} style={{ margin: 'auto', width: '60%' }}>
               <form onSubmit={handleSubmit}>
                 <div className={styles.inputRow}>
                   <div className={styles.formGroup}>
@@ -109,7 +110,7 @@ function PerfilProfesor() {
                       label="Nombres"
                       type="text"
                       name="nombres"
-                      value={isEditing ? updatedData.nombres : userData.nombres}
+                      value={updatedData.nombres}
                       onChange={handleChange}
                       disabled={!isEditing}
                     />
@@ -117,7 +118,7 @@ function PerfilProfesor() {
                       label="Apellidos"
                       type="text"
                       name="apellidos"
-                      value={isEditing ? updatedData.apellidos : userData.apellidos}
+                      value={updatedData.apellidos}
                       onChange={handleChange}
                       disabled={!isEditing}
                     />
@@ -125,7 +126,7 @@ function PerfilProfesor() {
                       label="Código"
                       type="text"
                       name="codigo"
-                      value={isEditing ? updatedData.codigo : userData.codigo}
+                      value={updatedData.codigo}
                       onChange={handleChange}
                       disabled={!isEditing}
                     />
@@ -133,31 +134,49 @@ function PerfilProfesor() {
                       label="Correo"
                       type="email"
                       name="correo"
-                      value={isEditing ? updatedData.correo : userData.correo}
+                      value={updatedData.correo}
                       onChange={handleChange}
                       disabled={!isEditing}
                     />
                   </div>
                 </div>
-
-                {/* Botones */}
                 <div className={styles.buttonContainer}>
-                  {isEditing ? (
-                    <>
-                      <button type="submit" className={styles.modificarButton}>Guardar Cambios</button>
-                      <button type="button" onClick={handleCancelClick} className={styles.cancelarButton}>Cancelar</button>
-                    </>
-                  ) : (
-                    <button type="button" onClick={handleEditClick} className={styles.editarButton}>Editar Perfil</button>
-                  )}
+                  <button type="button" className={styles.modificarButton}>Modificar</button>
                   <button type="button" className={styles.cambiarContrasenaButton}>Cambiar contraseña</button>
                 </div>
               </form>
-            )}
-            {activeTab === 'trabajos' && (
-              <TrabajosGuardados investigaciones={[]} role="usuario" />
-            )}
-          </div>
+              <div className={styles.imageSection}>
+                <img
+                  src={updatedData.fotoPerfil ? updatedData.fotoPerfil : ProfilePicture}
+                  alt="Foto de perfil"
+                />
+                <label className={styles.cambiarFotoButton} htmlFor="fotoPerfil">
+                  Cambiar foto
+                  <input
+                    type="file"
+                    id="fotoPerfil"
+                    name="fotoPerfil"
+                    onChange={handleImageChange}
+                    style={{ display: 'none' }}
+                  />
+                </label>
+              </div>
+            </div>
+          )}
+          {activeTab === 'trabajos' && (
+            trabajosGuardados.map(trabajo => (
+              <div key={trabajo.id} className={trabajosStyles.trabajoItem}>
+                <img src={trabajo.image} alt="Trabajo" className={trabajosStyles.trabajoImage} />
+                <div className={trabajosStyles.trabajoInfo}>
+                  <h3 className={trabajosStyles.trabajoTitle}>{trabajo.title}</h3>
+                  <div className={trabajosStyles.trabajoActions}>
+                    <p className={trabajosStyles.trabajoDescription}>{trabajo.description}</p>
+                    <p className={trabajosStyles.trabajoDate}>Subido: {trabajo.dateUploaded}</p>
+                  </div>
+                </div>
+              </div>
+            ))
+          )}
         </div>
       </div>
     </div>

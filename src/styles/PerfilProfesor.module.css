@@ -1,4 +1,4 @@
-/* Perfil.module.css */
+/* Perfilalumno.module.css */
 
 /* Contenedor principal del perfil */
 .profileContent {  
@@ -16,8 +16,10 @@
 /* Contenedor del formulario */
 .perfilContainer {
   display: flex;
+  flex-direction: column;
+  align-items: center; /* Centrar los elementos horizontalmente */
+  margin-top: 50px; /* Espacio adicional en la parte superior */
 }
-
 
 /* Encabezado del perfil (pestañas) */
 .profileHeader {
@@ -39,22 +41,36 @@
   gap: 10px; /* Espacio entre los botones */
   width: 100%; /* Los botones ocupan todo el ancho */
 }
-.tabs button {
-  background-color: transparent;
-  border: none;
-  font-size: 16px;
-  cursor: pointer;
-  margin-right: 20px; /* Espacio entre los botones */
-  padding: 10px 15px; /* Reducimos el padding */
-  border-bottom: 5px solid #F26522; /* Borde inferior sutil en todos los botones */
-}
 
+.tabs button {
+  padding: 10px 20px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  position: relative;
+  font-size: 17px; /* Ajusta el tamaño de la fuente según tus necesidades */
+  font-weight: normal; /* Peso de la fuente normal */
+}
 .tabs button:last-child { /* Eliminamos el margen del último botón */
   margin-right: 0;
 }
 
 .tabs button.active-tab {
   border-bottom: 2px solid #F26522; /* Subrayado naranja para la pestaña activa */
+}
+.activeTab {
+  color: orange;
+  font-weight: bold; /* Letras gruesas */
+  font-size: 18px; /* Letras más grandes */
+}
+.activeTab::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: orange;
 }
 /* Contenedor de los campos del formulario */
 .formGroup {
@@ -80,47 +96,20 @@
   background-color: #f8f8f8;
 }
 
-/* Sección de la imagen */
-.imageSection {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 50%;
-}
-
-/* Imagen de perfil */
-.imageSection img {
-  width: 250px; 
-  height: 250px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 50px;
-  margin-left: 2300px;
-}
-
 /* Etiqueta del botón para cambiar foto */
 .imageSection label {
   background-color: #F26522;
   color: white;
   padding: 10px 15px;
   border: none;
-  margin-bottom: 200px;
   border-radius: 5px;
   cursor: pointer;
   font-size: 14px;
+  margin-bottom: 20px;
 }
 
-/* Párrafo (no usado actualmente) */
-.imageSection p {
-  margin: 0;
-}
-.imageSection > div { /* Nuevo estilo para el contenedor del label y el input */
-  align-items: center;
-}
-/* Estilos para los botones */
-.modificarButton,
-.cambiarContrasenaButton,
-.editarButton {
+/* Estilos para el botón de modificar */
+.modificarButton {
   background-color: #F26522;
   color: white;
   padding: 10px 15px;
@@ -128,11 +117,12 @@
   border-radius: 5px;
   cursor: pointer;
   font-size: 14px;
-  margin-top: 20px; 
   width: 100%;
+  margin-top: 20px; /* Espacio adicional arriba del botón */
 }
 
-.cancelarButton{
+/* Estilo específico para el botón de cambiar contraseña */
+.cambiarContrasenaButton {
   background-color: #F26522;
   color: white;
   padding: 10px 15px;
@@ -140,21 +130,31 @@
   border-radius: 5px;
   cursor: pointer;
   font-size: 14px;
-  margin-top: 20px; 
   width: 100%;
 }
 
-.modificarButton4{
-  margin-right: 110px;
-  padding-top: 40px;
-  color: white;
-}
-.modificarButton3{
-  margin-left: 2570px;
-  color: white;
+/* Contenedor de la imagen */
+.imageSection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* Alineamos la imagen a la derecha */
+  justify-content: center; /* Centrar verticalmente */
+  width: 100%;
+  margin-left: 700px;
+  margin-top: -500px; /* Subir la imagen */
 }
 
-.imageSection .buttonContainer label { /* Estilos específicos para el botón "Cambiar foto" */
+.imageSection img {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 50px;
+  margin-left: auto; /* Mover la imagen a la derecha */
+}
+
+/* Estilos específicos para el botón "Cambiar foto" */
+.imageSection .buttonContainer label {
   background-color: #F26522;
   color: white;
   padding: 10px 15px;
@@ -162,9 +162,17 @@
   cursor: pointer;
   font-size: 14px;
   width: 100%; /* Hacemos que el botón ocupe todo el ancho */
+  margin-top: 10px; /* Ajustamos el margen superior */
 }
-.activeTab {
-  font-weight: bold;
-  border-bottom: 2px solid #000;
+.subirTrabajoButton {
+  background-color: #F26522;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  position: absolute;
+  right: 45%;
+  top: 30%; /* Adjust this value to position the button vertically */
+  transform: translateY(-50%);
 }
-

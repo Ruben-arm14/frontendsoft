@@ -28,10 +28,5 @@
 
 .profile-text {
   margin-right: 10px;
-}
-
-.profile-icon {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
+  padding-top: 100px;
 }
