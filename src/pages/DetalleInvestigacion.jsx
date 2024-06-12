@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { FaFileAlt } from 'react-icons/fa';
-import { AiOutlineStar, AiFillStar } from 'react-icons/ai';
 import Header from '../components/Header';
 import logoicon from '../images/perfil.png';
 import styles from '../styles/DetalleInvestigacion.module.css';
-import data from '../data/db.json'; // Importar los datos desde el archivo db.json
+import data from '../data/db.json'; 
 
 function DetalleInvestigacion() {
     const { id } = useParams();
-    const [rating, setRating] = useState(0);
+    const [likes, setLikes] = useState(0);
     const [investigacion, setInvestigacion] = useState(null); // Estado para almacenar la investigación
 
     useEffect(() => {
@@ -18,8 +17,8 @@ function DetalleInvestigacion() {
         setInvestigacion(investigacionEncontrada);
     }, [id]);
 
-    const handleStarClick = (value) => {
-        setRating(value);
+    const handleLike = () => {
+        setLikes(likes + 1);
     };
 
     return (
@@ -104,23 +103,15 @@ function DetalleInvestigacion() {
                             </div>
                         </div>
                         <div className={styles.ratingSection}>
-                            <p>Valora este trabajo:</p>
-                            <div className={styles.starRating}>
-                                {[1, 2, 3, 4, 5].map((value) =>
-                                    value <= rating ? (
-                                        <AiFillStar
-                                            key={value}
-                                            className={styles.star}
-                                            onClick={() => handleStarClick(value)}
-                                        />
-                                    ) : (
-                                        <AiOutlineStar
-                                            key={value}
-                                            className={styles.star}
-                                            onClick={() => handleStarClick(value)}
-                                        />
-                                    )
-                                )}
+                            <p>Me gusta este trabajo:</p>
+                            <div className={styles.likeSection}>
+                                <img
+                                    src="https://img.icons8.com/material-outlined/24/000000/facebook-like.png"
+                                    alt="Like"
+                                    className={styles.likeIcon}
+                                    onClick={handleLike}
+                                />
+                                <span className={styles.likesCount}>{likes}</span>
                             </div>
                         </div>
                     </div>

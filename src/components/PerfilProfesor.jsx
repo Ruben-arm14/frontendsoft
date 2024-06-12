@@ -18,20 +18,20 @@ function PerfilProfesor() {
   const [updatedData, setUpdatedData] = useState({ ...userData });
   const [isLoading, setIsLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('informacion');
-  const [trabajosGuardados, setTrabajosGuardados] = useState([
+  const [trabajosGuardados] = useState([
     {
       id: 1,
       title: 'Investigación 1',
       description: 'Descripción de la investigación 1',
       image: 'https://via.placeholder.com/100',
-      dateUploaded: '2024-01-01',
+      likes: 10, // Cambiado de rating a likes
     },
     {
       id: 2,
       title: 'Investigación 2',
       description: 'Descripción de la investigación 2',
       image: 'https://via.placeholder.com/100',
-      dateUploaded: '2024-02-01',
+      likes: 5, // Cambiado de rating a likes
     },
   ]);
 

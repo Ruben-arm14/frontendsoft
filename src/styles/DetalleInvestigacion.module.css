@@ -1,3 +1,5 @@
+/* DetalleInvestigacion.module.css */
+
 .container {
     display: flex;
     justify-content: space-between;
@@ -141,22 +143,17 @@
     margin-top: 60px; /* Aumentar el margen superior para bajar más la sección de valoración */
 }
 
-.starRating {
+.likeSection {
     display: flex;
+    align-items: center;
 }
 
-.star {
-    font-size: 24px;
-    color: gold;
-    margin-right: 5px;
+.likeIcon {
+    width: 24px; /* Ajusta el tamaño del ícono según sea necesario */
+    height: 24px;
     cursor: pointer;
 }
 
-.tag {
-    background-color: #007bff;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    margin-right: 10px;
-    margin-bottom: 5px;
+.likesCount {
+    margin-left: 5px;
 }

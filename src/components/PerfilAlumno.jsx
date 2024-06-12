@@ -1,8 +1,10 @@
+// PerfilAlumno.jsx
+
 import React, { useState, useEffect } from 'react';
-import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import Header from './Header';
 import FormInput from './common/FormInput';
 import ProfilePicture from '../images/perfil.png'; // Cambiada la imagen predeterminada
+import Likes from './Likes'; // Importamos el componente Likes
 import styles from '../styles/PerfilAlumno.module.css';
 import trabajosStyles from '../styles/TrabajosGuardados.module.css';
 
@@ -19,20 +21,20 @@ function PerfilAlumno() {
   const [updatedData, setUpdatedData] = useState({ ...userData });
   const [isLoading, setIsLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('informacion');
-  const [trabajosGuardados, setTrabajosGuardados] = useState([
+  const [trabajosGuardados] = useState([
     {
       id: 1,
       title: 'Investigación 1',
       description: 'Descripción de la investigación 1',
       image: 'https://via.placeholder.com/100',
-      rating: 4,
+      likes: 10, // Cambiado de rating a likes
     },
     {
       id: 2,
       title: 'Investigación 2',
       description: 'Descripción de la investigación 2',
       image: 'https://via.placeholder.com/100',
-      rating: 5,
+      likes: 5, // Cambiado de rating a likes
     },
   ]);
 
@@ -66,10 +68,6 @@ function PerfilAlumno() {
     setIsEditing(false);
     setUserData(updatedData);
     localStorage.setItem('userData', JSON.stringify(updatedData));
-  };
-
-  const handleStarClick = (value) => {
-    console.log('Valoración:', value);
   };
 
   if (isLoading) {
@@ -167,24 +165,10 @@ function PerfilAlumno() {
                 <div className={trabajosStyles.trabajoInfo}>
                   <h3 className={trabajosStyles.trabajoTitle}>{trabajo.title}</h3>
                   <p className={trabajosStyles.trabajoDescription}>{trabajo.description}</p>
-                  <div className={trabajosStyles.trabajoRating}>
-                    {[1, 2, 3, 4, 5].map(value => (
-                      value <= trabajo.rating ? (
-                        <AiFillStar
-                          key={value}
-                          className={trabajosStyles.star}
-                          onClick={() => handleStarClick(value)}
-                        />
-                      ) : (
-                        <AiOutlineStar
-                          key={value}
-                          className={trabajosStyles.star}
-                          onClick={() => handleStarClick(value)}
-                        />
-                      )
-                    ))}
+                  <div className={trabajosStyles.trabajoActions}>
+                    <Likes initialLikes={trabajo.likes} />
+                    <button className={trabajosStyles.removeButton}>Eliminar del perfil</button>
                   </div>
-                  <button className={trabajosStyles.removeButton}>Eliminar del perfil</button>
                 </div>
               </div>
             ))

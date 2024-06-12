@@ -1,41 +1,44 @@
-import React from 'react';
-import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
-import styles from '../styles/TrabajosGuardados.module.css';
+// TrabajoGuardado.jsx
+import React, { useState } from 'react';
+import trabajosStyles from '../styles/TrabajosGuardados.module.css';
+import likeIcon from '../images/like-icon.png';
+import unlikeIcon from '../images/like-icon.png';
 
-function TrabajosGuardados({ investigaciones, role }) {
-  const handleRemove = (id) => {
-    // Lógica para eliminar el trabajo del perfil
+function TrabajoGuardado({ trabajo }) {
+  const [isLiked, setIsLiked] = useState(false);
+  const [likeCount, setLikeCount] = useState(trabajo.likes);
+
+  const handleLikeClick = () => {
+    if (isLiked) {
+      setLikeCount(likeCount - 1);
+    } else {
+      setLikeCount(likeCount + 1);
+    }
+    setIsLiked(!isLiked);
   };
 
-  if (investigaciones.length === 0) {
-    return <div className={styles.emptyMessage}>No tienes trabajos guardados.</div>;
-  }
-
   return (
-    <div className={styles.trabajosContainer}>
-      {investigaciones.map((investigacion) => (
-        <div key={investigacion.id} className={styles.trabajoItem}>
-          <img src={investigacion.image} alt={investigacion.title} className={styles.trabajoImage} />
-          <div className={styles.trabajoInfo}>
-            <h3 className={styles.trabajoTitle}>{investigacion.title}</h3>
-            <p className={styles.trabajoDescription}>{investigacion.description}</p>
+    <div className={trabajosStyles.trabajoItem}>
+      <img src={trabajo.image} alt="Trabajo" className={trabajosStyles.trabajoImage} />
+      <div className={trabajosStyles.trabajoInfo}>
+        <h3 className={trabajosStyles.trabajoTitle}>{trabajo.title}</h3>
+        <p className={trabajosStyles.trabajoDescription}>{trabajo.description}</p>
+        <div className={trabajosStyles.trabajoActions}>
+          <div className={trabajosStyles.like}>
+            <img
+              src={isLiked ? likeIcon : unlikeIcon}
+              alt="Like"
+              className={trabajosStyles.likeIcon}
+              onClick={handleLikeClick}
+              style={{ width: '18px', height: '18px' }}
+            />
+            <span className={trabajosStyles.likeCount}>{likeCount}</span>
           </div>
-          <div className={styles.trabajoRating}>
-            {[1, 2, 3, 4, 5].map((value) =>
-              value <= investigacion.rating ? (
-                <AiFillStar key={value} className={styles.star} />
-              ) : (
-                <AiOutlineStar key={value} className={styles.star} />
-              )
-            )}
-          </div>
-          <button className={styles.removeButton} onClick={() => handleRemove(investigacion.id)}>
-            Eliminar del perfil
-          </button>
+          <button className={trabajosStyles.removeButton}>Eliminar del perfil</button>
         </div>
-      ))}
+      </div>
     </div>
   );
 }
 
-export default TrabajosGuardados;
+export default TrabajoGuardado;
