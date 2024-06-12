@@ -28,5 +28,10 @@
 
 .profile-text {
   margin-right: 10px;
-  padding-top: 100px;
+  vertical-align: middle;
+}
+
+.profile-icon {
+  height: 24px; /* Ajusta el tamaño del icono según tus necesidades */
+  vertical-align: middle;
 }

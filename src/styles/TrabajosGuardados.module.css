@@ -35,6 +35,7 @@
   margin-top: 10px;
   gap: 10px; /* Espacio entre el like y el botón */
 }
+
 .trabajoLikes {
   display: flex;
   align-items: center;

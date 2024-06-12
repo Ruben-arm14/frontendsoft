@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import FormInput from './common/FormInput';
-import ProfilePicture from '../images/perfil.png';
+import ProfilePicture from '../images/perfil.png'; // Asegúrate de que esta ruta sea correcta
 import styles from '../styles/PerfilProfesor.module.css';
 import trabajosStyles from '../styles/TrabajosGuardados.module.css';
 
@@ -24,14 +24,16 @@ function PerfilProfesor() {
       title: 'Investigación 1',
       description: 'Descripción de la investigación 1',
       image: 'https://via.placeholder.com/100',
-      likes: 10, // Cambiado de rating a likes
+      likes: 10,
+      dateUploaded: '2022-08-15T00:00:00Z',
     },
     {
       id: 2,
       title: 'Investigación 2',
       description: 'Descripción de la investigación 2',
       image: 'https://via.placeholder.com/100',
-      likes: 5, // Cambiado de rating a likes
+      likes: 5,
+      dateUploaded: '2022-08-16T00:00:00Z',
     },
   ]);
 
@@ -71,6 +73,11 @@ function PerfilProfesor() {
     console.log('Subir trabajo');
   };
 
+  const formatDate = (isoString) => {
+    const date = new Date(isoString);
+    return date.toLocaleDateString('es-ES'); // Formato dd/mm/yyyy
+  };
+
   if (isLoading) {
     return <div>Cargando datos del perfil...</div>;
   }
@@ -95,11 +102,10 @@ function PerfilProfesor() {
               <span className={activeTab === 'trabajos' ? styles.tabActiveText : styles.tabText}>Trabajos subidos</span>
             </button>
           </div>
-
         </div>
         {activeTab === 'trabajos' && (
-            <button className={styles.subirTrabajoButton} onClick={handleUploadClick}>Subir trabajo</button>
-          )}
+          <button className={styles.subirTrabajoButton} onClick={handleUploadClick}>Subir trabajo</button>
+        )}
         <div className={styles.perfilContainer}>
           {activeTab === 'informacion' && (
             <div className={styles.formContent} style={{ margin: 'auto', width: '60%' }}>
@@ -141,7 +147,7 @@ function PerfilProfesor() {
                   </div>
                 </div>
                 <div className={styles.buttonContainer}>
-                  <button type="button" className={styles.modificarButton}>Modificar</button>
+                  <button type="button" className={styles.modificarButton} onClick={() => setIsEditing(!isEditing)}>Modificar</button>
                   <button type="button" className={styles.cambiarContrasenaButton}>Cambiar contraseña</button>
                 </div>
               </form>
@@ -149,6 +155,7 @@ function PerfilProfesor() {
                 <img
                   src={updatedData.fotoPerfil ? updatedData.fotoPerfil : ProfilePicture}
                   alt="Foto de perfil"
+                  onError={(e) => e.target.src = ProfilePicture} // Fallback en caso de error
                 />
                 <label className={styles.cambiarFotoButton} htmlFor="fotoPerfil">
                   Cambiar foto
@@ -171,7 +178,7 @@ function PerfilProfesor() {
                   <h3 className={trabajosStyles.trabajoTitle}>{trabajo.title}</h3>
                   <div className={trabajosStyles.trabajoActions}>
                     <p className={trabajosStyles.trabajoDescription}>{trabajo.description}</p>
-                    <p className={trabajosStyles.trabajoDate}>Subido: {trabajo.dateUploaded}</p>
+                    <p className={trabajosStyles.trabajoDate} style={{ marginLeft: '250px' }}>Subido: {formatDate(trabajo.dateUploaded)}</p>
                   </div>
                 </div>
               </div>

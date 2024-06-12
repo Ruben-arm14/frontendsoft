@@ -1,9 +1,7 @@
-// PerfilAlumno.jsx
-
 import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import FormInput from './common/FormInput';
-import ProfilePicture from '../images/perfil.png'; // Cambiada la imagen predeterminada
+import ProfilePicture from '../images/perfil.png'; // Asegúrate de que esta ruta sea correcta
 import Likes from './Likes'; // Importamos el componente Likes
 import styles from '../styles/PerfilAlumno.module.css';
 import trabajosStyles from '../styles/TrabajosGuardados.module.css';
@@ -27,7 +25,7 @@ function PerfilAlumno() {
       title: 'Investigación 1',
       description: 'Descripción de la investigación 1',
       image: 'https://via.placeholder.com/100',
-      likes: 10, // Cambiado de rating a likes
+      likes: 7, // Cambiado de rating a likes
     },
     {
       id: 2,
@@ -136,7 +134,7 @@ function PerfilAlumno() {
                   </div>
                 </div>
                 <div className={styles.buttonContainer}>
-                  <button type="button" className={styles.modificarButton}>Modificar</button>
+                  <button type="button" className={styles.modificarButton} onClick={() => setIsEditing(!isEditing)}>Modificar</button>
                   <button type="button" className={styles.cambiarContrasenaButton}>Cambiar contraseña</button>
                 </div>
               </form>
@@ -144,6 +142,7 @@ function PerfilAlumno() {
                 <img
                   src={updatedData.fotoPerfil ? updatedData.fotoPerfil : ProfilePicture}
                   alt="Foto de perfil"
+                  onError={(e) => e.target.src = ProfilePicture} // Fallback en caso de error
                 />
                 <label className={styles.cambiarFotoButton} htmlFor="fotoPerfil" style={{ marginLeft: '-10px' }}> {/* Modificación aquí */}
                   Cambiar foto
@@ -164,10 +163,12 @@ function PerfilAlumno() {
                 <img src={trabajo.image} alt="Trabajo" className={trabajosStyles.trabajoImage} />
                 <div className={trabajosStyles.trabajoInfo}>
                   <h3 className={trabajosStyles.trabajoTitle}>{trabajo.title}</h3>
-                  <p className={trabajosStyles.trabajoDescription}>{trabajo.description}</p>
-                  <div className={trabajosStyles.trabajoActions}>
-                    <Likes initialLikes={trabajo.likes} />
-                    <button className={trabajosStyles.removeButton}>Eliminar del perfil</button>
+                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <p className={trabajosStyles.trabajoDescription}>{trabajo.description}</p>
+                    <div className={trabajosStyles.trabajoActions} style={{ marginLeft: '200px' }}> {/* Añadido aquí */}
+                      <Likes initialLikes={trabajo.likes} />
+                      <button className={trabajosStyles.removeButton}>Eliminar del perfil</button>
+                    </div>
                   </div>
                 </div>
               </div>
